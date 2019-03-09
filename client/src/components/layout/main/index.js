@@ -22,33 +22,39 @@ class Home extends Component {
 
     return (
       <div className="home">
-        <p>No films found</p>
         <div className="card-wrapper">
-          {movies &&
-            movies.map(movie => (
-              <div className="card" key={movie.id}>
-                <img
-                  src={movie.poster_path}
-                  className="card-img-top"
-                  alt={movie.title}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">
-                    <span>{movie.title}</span>
-                    <span className="badge badge-secondary">
-                      {movie.release_date}
-                    </span>
-                  </h5>
-                  <p className="card-text">
-                    <small className="text-muted">
-                      {movie.genres.map(genre => (
-                        <span>{genre}</span>
-                      ))}
-                    </small>
-                  </p>
+          {movies ? (
+            movies.map(movie => {
+              const date = Date.parse(movie.release_date);
+              const parsedDate = new Date(date).getFullYear();
+              return (
+                <div className="card" key={movie.id}>
+                  <img
+                    src={movie.poster_path}
+                    className="card-img-top"
+                    alt={movie.title}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      <span className="title-text">{movie.title}</span>
+                      <span className="badge badge-secondary">
+                        {parsedDate}
+                      </span>
+                    </h5>
+                    <p className="card-text">
+                      <small className="text-muted">
+                        {movie.genres.map(genre => (
+                          <span>{genre}</span>
+                        ))}
+                      </small>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })
+          ) : (
+            <p>No films found</p>
+          )}
         </div>
         {/* <ListItems />
     <ListItemPreview /> */}

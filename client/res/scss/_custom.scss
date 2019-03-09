@@ -60,9 +60,9 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     .card {
-      max-width: 300px;
+      max-width: $card-max-width;
       margin-bottom: 10px;
 
       .card-title {
@@ -70,6 +70,13 @@ body {
         align-items: center;
         justify-content: space-between;
         width: 100%;
+
+        .title-text {
+          width: 200px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
       }
     }
   }
