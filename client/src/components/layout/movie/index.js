@@ -4,7 +4,7 @@ const Movie = () => (
   <article className="movie">
     <div className="card">
       <div className="row no-gutters">
-        <div className="col">
+        <div className="col-md-4">
           <img
             src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
             className="card-img"

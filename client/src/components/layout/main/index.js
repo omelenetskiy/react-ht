@@ -44,8 +44,13 @@ class Home extends Component {
                     </h5>
                     <p className="card-text">
                       <small className="text-muted">
-                        {movie.genres.map(genre => (
-                          <span>{genre}</span>
+                        {movie.genres.map((genre, i) => (
+                          <span>
+                            {movie.genres.length > 1 &&
+                            i < movie.genres.length - 1
+                              ? `${genre} & `
+                              : genre}
+                          </span>
                         ))}
                       </small>
                     </p>

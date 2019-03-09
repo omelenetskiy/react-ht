@@ -79,10 +79,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+
     .card {
       max-width: $card-max-width;
-      margin-bottom: 10px;
+      margin: 10px;
 
       .card-title {
         display: flex;
