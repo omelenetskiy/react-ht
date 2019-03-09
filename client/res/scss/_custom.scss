@@ -1,7 +1,7 @@
 body {
   min-width: $min-page-width;
   line-height: 1;
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url('../images/collage.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,6 +48,25 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.filter {
+  flex-shrink: 0;
+}
+
+.movie {
+  .card {
+    color: #fff;
+    background: transparent;
+
+    .card-title {
+      color: $red;
+    }
+
+    .card-img {
+      max-width: 250px;
+    }
   }
 }
 

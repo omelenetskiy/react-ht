@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Search from '../../common/search';
 
-const Header = () => (
+const Header = ({ children }) => (
   <header className="header">
     <div className="container">
       <nav>
@@ -13,9 +13,17 @@ const Header = () => (
           Search
         </button>
       </nav>
-      <Search />
+      {children}
     </div>
   </header>
 );
+
+Header.propTypes = {
+  children: PropTypes.element
+};
+
+Header.defaultProps = {
+  children: null
+};
 
 export default Header;

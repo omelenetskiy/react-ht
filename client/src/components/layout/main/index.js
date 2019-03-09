@@ -11,6 +11,7 @@ class Home extends Component {
     fetch('https://reactjs-cdp.herokuapp.com/movies')
       .then(response => response.json())
       .then(movies => {
+        console.log(movies);
         this.setState({
           movies: movies.data
         });
