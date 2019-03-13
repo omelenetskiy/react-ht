@@ -1,19 +1,19 @@
 // Imports
-import React, { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { hot } from 'react-hot-loader/root';
+import React, { Fragment } from "react";
+import { Route, Switch } from "react-router-dom";
+import { hot } from "react-hot-loader/root";
 // App Imports
 // import routes from '../routes';
 // import Layout from './common/Layout';
 // import NotFound from './common/NotFound';
 
-import Header from './layout/header';
-import Movie from './layout/movie';
-import Search from './common/search';
-import Filter from './common/filter';
-import Footer from './layout/footer';
-import Home from './layout/main';
-import NotFound from './common/notFound';
+import Header from "./layout/header";
+import Movie from "./layout/movie";
+import Search from "./common/search";
+import Filter from "./common/filter";
+import Footer from "./layout/footer";
+import Home from "./layout/main";
+import NotFound from "./common/notFound";
 
 const App = props => (
   // <Switch>
@@ -26,8 +26,7 @@ const App = props => (
   <Fragment>
     <Header>
       {/* <Switch> */}
-      {/* <Route exact path="/" component={Search} /> */}
-      {/* <Route exact path="/movie/:id" component={Movie} /> */}
+      {/* <Route path="/" component={Search} /> */}
       {/* </Switch> */}
     </Header>
     <Filter />
@@ -35,8 +34,9 @@ const App = props => (
       <div className="container">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/movie/:id" component={Movie} />
           {/* <Route exact path="/movie/:id" component={Home} /> */}
-          <Route path="/*" component={NotFound} />
+          {/* <Route path="/*" component={NotFound} /> */}
         </Switch>
       </div>
     </section>

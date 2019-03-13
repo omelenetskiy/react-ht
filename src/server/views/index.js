@@ -1,4 +1,4 @@
-const index = (helmet = {}, appHtml = '', initialState = {}) =>
+const index = (helmet = {}, appHtml = "", initialState = {}, css) =>
   `<!DOCTYPE html>
 <html>
 <head>

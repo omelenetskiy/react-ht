@@ -1,27 +1,28 @@
 // Imports
-import path from 'path';
-import { Server } from 'http';
-import express from 'express';
+import path from "path";
+import { Server } from "http";
+import express from "express";
 
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { matchPath } from 'react-router';
-import { StaticRouter } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { matchPath } from "react-router";
+import { StaticRouter } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
 // App Imports
-import { rootReducer } from '../shared/store/store';
-import routes from '../shared/routes';
-import App from '../shared/components/App';
-import index from './views/index';
+import { rootReducer } from "../shared/store/store";
+import routes from "../shared/routes";
+import App from "../shared/components/App";
+import index from "./views/index";
 
-import config from '../../webpack.config.dev';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import config from "../../webpack.config.dev";
+import webpack from "webpack";
+import webpackDevMiddleware from "webpack-dev-middleware";
+import webpackHotMiddleware from "webpack-hot-middleware";
+import StyleContext from "isomorphic-style-loader/StyleContext";
 
 const compiler = webpack(config);
 
@@ -38,17 +39,18 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 
 // Static files folder
-app.use(express.static(path.join(__dirname, './static')));
+app.use(express.static(path.join(__dirname, "./static")));
 
 // Store (new store for each request)
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // Match any Route
-app.get('*', (request, response) => {
+app.get("*", (request, response) => {
   let status = 200;
 
   const matches = routes.reduce((matches, route) => {
     const match = matchPath(request.url, route.path, route);
+    console.log("router match ", match);
     if (match && match.isExact) {
       matches.push({
         route,
@@ -95,7 +97,7 @@ app.get('*', (request, response) => {
 
         // Reset the state on server
         store.dispatch({
-          type: 'RESET'
+          type: "RESET"
         });
 
         // Finally send generated HTML with initial data to the client
@@ -117,7 +119,7 @@ app.get('*', (request, response) => {
 
 // Start Server
 const port = process.env.PORT || 3000;
-const env = process.env.NODE_ENV || 'production';
+const env = process.env.NODE_ENV || "production";
 server.listen(port, error => {
   if (error) {
     return console.error(error);

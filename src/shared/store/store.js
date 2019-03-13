@@ -1,22 +1,24 @@
 // Imports
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { combineReducers } from 'redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { composeWithDevTools } from "redux-devtools-extension";
+import { combineReducers } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 // App Imports
-import * as blog from '../components/blog/api/state';
+import * as blog from "../components/blog/api/state";
 
-import movies from './reducers/movies';
+import movies from "./reducers/movies";
+import movie from "./reducers/movie";
 
 // App Reducer
 const appReducer = combineReducers({
-  movies
+  movies,
+  movie
 });
 
 // Root Reducer
 export const rootReducer = (state, action) => {
-  if (action.type === 'RESET') {
+  if (action.type === "RESET") {
     state = undefined;
   }
 
@@ -25,7 +27,7 @@ export const rootReducer = (state, action) => {
 
 // Load initial state from server side
 let initialState;
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   initialState = window.__INITIAL_STATE__;
   delete window.__INITIAL_STATE__;
 }
