@@ -13,7 +13,7 @@ const index = (helmet = {}, appHtml = "", initialState = {}, css) =>
         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
     </script>
     
-    <script type="text/javascript" src="bundle.js"></script>
+    <script type="text/javascript" src="/bundle.js"></script>
 </body>
 </html>`;
 

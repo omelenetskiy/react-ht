@@ -3,6 +3,12 @@
   "plugins": [
     "@babel/plugin-transform-runtime",
     "react-hot-loader/babel",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    [
+      "css-modules-transform",
+      {
+        "extensions": [".scss"]
+      }
+    ]
   ]
 }

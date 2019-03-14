@@ -1,0 +1,21 @@
+/*  imported from Button.scss  */
+
+.ec73350c {
+  border: 0;
+  text-transform: uppercase;
+  padding: 7px 15px;
+  color: #fff;
+  background-color: $danger-color;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $danger-color-dark;
+  }
+}
+
+.f46c1abc {
+  background-color: transparent;
+  padding: 50px;
+}

@@ -7,7 +7,7 @@ import App from "../shared/components/App";
 
 import { store } from "../shared/store/store";
 
-import "./styles.scss";
+import "./scss/styles.scss";
 
 const Client = () => (
   <Provider store={store} key="provider">

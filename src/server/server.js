@@ -22,7 +22,6 @@ import config from "../../webpack.config.dev";
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
-import StyleContext from "isomorphic-style-loader/StyleContext";
 
 const compiler = webpack(config);
 
@@ -39,7 +38,7 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 
 // Static files folder
-app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.static(path.join(__dirname, "../../static")));
 
 // Store (new store for each request)
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -50,7 +49,6 @@ app.get("*", (request, response) => {
 
   const matches = routes.reduce((matches, route) => {
     const match = matchPath(request.url, route.path, route);
-    console.log("router match ", match);
     if (match && match.isExact) {
       matches.push({
         route,
@@ -109,13 +107,6 @@ app.get("*", (request, response) => {
     }
   );
 });
-
-// compiler.plugin('done', function() {
-//   console.log('Clearing /client/ module cache from server');
-//   Object.keys(require.cache).forEach(function(id) {
-//     if (/[\/\\]client[\/\\]/.test(id)) delete require.cache[id];
-//   });
-// });
 
 // Start Server
 const port = process.env.PORT || 3000;

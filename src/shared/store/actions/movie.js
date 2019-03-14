@@ -30,7 +30,6 @@ export function actionMovieFetch({ id }) {
 export const actionMovieFetchIfNeeded = ({ id }) => {
   return (dispatch, getState) => {
     let state = getState();
-    console.log("state.movie", state.movie.movie.title);
     if (!state.movie.movie.title) {
       return dispatch(actionMovieFetch({ id }));
     }

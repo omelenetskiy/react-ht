@@ -1,16 +1,8 @@
 import webpack from "webpack";
 import path from "path";
+import autoprefixer from "autoprefixer";
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
-const CSSModuleLoader = {
-  loader: "css-loader",
-  options: {
-    modules: true,
-    sourceMap: true,
-    localIdentName: "[local]__[hash:base64:5]"
-  }
-};
 
 export default {
   mode: process.env.NODE_ENV,
@@ -21,7 +13,7 @@ export default {
     "./src/client/index.js"
   ],
   output: {
-    path: path.join(__dirname, "static"),
+    path: path.join(__dirname, "static/js"),
     filename: "bundle.js",
     publicPath: "/"
   },
@@ -33,7 +25,8 @@ export default {
   resolve: {
     extensions: [".js"],
     alias: {
-      request: "browser-request"
+      request: "browser-request",
+      "react-dom": "@hot-loader/react-dom"
     }
   },
   module: {
@@ -46,7 +39,41 @@ export default {
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: [
+          {
+            loader: "isomorphic-style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localIdentName: "[name]__[local]___[hash:base64:5]"
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              data: '@import "./src/client/scss/vars.scss";'
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: "postcss",
+              sourceMap: true,
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    ">1%",
+                    "last 4 versions",
+                    "Firefox ESR",
+                    "not ie < 9"
+                  ]
+                })
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -58,10 +85,5 @@ export default {
         ]
       }
     ]
-  },
-  resolve: {
-    alias: {
-      "react-dom": "@hot-loader/react-dom"
-    }
   }
 };

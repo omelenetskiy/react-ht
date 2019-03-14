@@ -19,10 +19,6 @@ const routes = [
     component: Home,
     exact: true
   },
-  // {
-  //   path: "/",
-  //   component: Search
-  // },
   {
     path: "/movie/:id",
     component: Movie

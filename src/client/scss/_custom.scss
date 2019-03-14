@@ -2,7 +2,7 @@ body {
   min-width: $min-page-width;
   line-height: 1;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('./images/collage.jpg');
+    url("../../../static/images/collage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
