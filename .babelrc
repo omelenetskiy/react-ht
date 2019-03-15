@@ -1,14 +1,9 @@
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
-    "@babel/plugin-transform-runtime",
     "react-hot-loader/babel",
-    "@babel/plugin-proposal-class-properties",
-    [
-      "css-modules-transform",
-      {
-        "extensions": [".scss"]
-      }
-    ]
+    "@babel/plugin-transform-strict-mode",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

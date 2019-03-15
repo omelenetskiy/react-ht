@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   actionMoviesFetch,
   actionMoviesFetchIfNeeded
-} from "../../../store/actions/movies";
+} from '../../../store/actions/movies';
 
 class Home extends Component {
   static fetchData({ store }) {
@@ -45,18 +45,16 @@ class Home extends Component {
                             {parsedDate}
                           </span>
                         </h5>
-                        <p className="card-text">
-                          <small className="text-muted">
-                            {movie.genres.map((genre, i) => (
-                              <span key={genre}>
-                                {movie.genres.length > 1 &&
-                                i < movie.genres.length - 1
-                                  ? `${genre} & `
-                                  : genre}
-                              </span>
-                            ))}
-                          </small>
-                        </p>
+                      </div>
+                      <div className="card-footer">
+                        {movie.genres.map((genre, i) => (
+                          <span key={genre}>
+                            {movie.genres.length > 1 &&
+                            i < movie.genres.length - 1
+                              ? `${genre} &`
+                              : genre}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </Link>

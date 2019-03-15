@@ -1,0 +1,12 @@
+.search-control {
+    width: 80%;
+    padding: 15px;
+    background-color: black;
+    border: none;
+    border-bottom: 5px solid $danger-color;
+    margin: 10px 0px;
+    color: #fff;
+    &:focus {
+        outline: 2px solid $danger-color;
+    }
+}

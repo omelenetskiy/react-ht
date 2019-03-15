@@ -1,21 +1,21 @@
-import webpack from "webpack";
-import path from "path";
-import autoprefixer from "autoprefixer";
+import webpack from 'webpack';
+import path from 'path';
 
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 export default {
   mode: process.env.NODE_ENV,
-  devtool: "#eval-source-map",
+  devtool: '#eval-source-map',
   entry: [
-    "react-hot-loader/patch",
-    "webpack-hot-middleware/client",
-    "./src/client/index.js"
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    './src/client/index.js',
+    './src/shared/scss/styles.scss'
   ],
   output: {
-    path: path.join(__dirname, "static/js"),
-    filename: "bundle.js",
-    publicPath: "/"
+    path: path.join(__dirname, 'static/js'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -23,54 +23,29 @@ export default {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   resolve: {
-    extensions: [".js"],
+    extensions: ['.js'],
     alias: {
-      request: "browser-request",
-      "react-dom": "@hot-loader/react-dom"
+      request: 'browser-request',
+      'react-dom': '@hot-loader/react-dom'
     }
   },
   module: {
     rules: [
       {
-        test: path.join(__dirname, "src"),
+        test: path.join(__dirname, 'src'),
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: [
+          'style-loader',
+          'css-loader',
           {
-            loader: "isomorphic-style-loader"
-          },
-          {
-            loader: "css-loader",
+            loader: 'sass-loader',
             options: {
-              modules: true,
-              localIdentName: "[name]__[local]___[hash:base64:5]"
-            }
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              data: '@import "./src/client/scss/vars.scss";'
-            }
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              sourceMap: true,
-              plugins: () => [
-                autoprefixer({
-                  browsers: [
-                    ">1%",
-                    "last 4 versions",
-                    "Firefox ESR",
-                    "not ie < 9"
-                  ]
-                })
-              ]
+              data: '@import "./src/shared/scss/vars.scss";'
             }
           }
         ]
@@ -79,7 +54,7 @@ export default {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {}
           }
         ]

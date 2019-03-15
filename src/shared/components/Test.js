@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from 'react';
 
-import Button from "./common/button/Button";
+import Button from './common/button/Button';
 
-const Test = () => <Button />;
+const Test = () => <div />;
 
 export default Test;

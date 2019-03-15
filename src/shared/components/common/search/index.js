@@ -11,7 +11,7 @@ class Search extends Component {
           <div className="col">
             <input
               type="email"
-              className="form-control"
+              className="search-control"
               id="inputEmail3"
               placeholder="Find your movie..."
             />
