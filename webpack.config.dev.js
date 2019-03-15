@@ -7,6 +7,7 @@ export default {
   mode: process.env.NODE_ENV,
   devtool: '#eval-source-map',
   entry: [
+    '@babel/polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     './src/client/index.js',

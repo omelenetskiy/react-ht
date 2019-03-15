@@ -20,8 +20,8 @@ const App = props => (
     <Test />
     <Header>
       <Switch>
-        <Route path="/" component={Search} />
-        <Route path="/movie/:id" component={Movie} />
+        {/* <Route path="/" component={Search} /> */}
+        <Route exact path="/movie/:id" component={Movie} />
       </Switch>
     </Header>
     <Filter />
