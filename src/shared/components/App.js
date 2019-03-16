@@ -1,27 +1,24 @@
 // Imports
-import React, { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { hot } from 'react-hot-loader/root';
+import React, { Fragment } from "react";
+import { Route, Switch } from "react-router-dom";
+import { hot } from "react-hot-loader/root";
 
-// App Imports
-import routes from '../routes';
-
-import Header from './layout/header';
-import Movie from './layout/movie';
-import Search from './common/search';
-import Filter from './common/filter';
-import Footer from './layout/footer';
-import Home from './layout/main';
-import NotFound from './common/notFound';
-import Test from './Test';
+import Header from "./layout/header/Header";
+import MoviePreview from "./layout/moviePreview/MoviePreview";
+import SearchInput from "./common/search/SearchInput";
+import Filter from "./common/filter/Filter";
+import Footer from "./layout/footer/Footer";
+import Home from "./layout/home/Home";
+import NotFound from "./common/notFound/NotFound";
+import Test from "./Test";
 
 const App = props => (
   <Fragment>
     <Test />
     <Header>
       <Switch>
-        {/* <Route path="/" component={Search} /> */}
-        <Route exact path="/movie/:id" component={Movie} />
+        <Route exact path="/" component={SearchInput} />
+        <Route path="/movie/:id" component={MoviePreview} />
       </Switch>
     </Header>
     <Filter />

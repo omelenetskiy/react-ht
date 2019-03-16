@@ -1,0 +1,13 @@
+.filter {
+  width: 100%;
+  background-color: $stylish-color;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+
+  .btn-group {
+    display: inline-flex;
+  }
+}

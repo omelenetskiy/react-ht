@@ -11,10 +11,20 @@ class Movie extends Component {
     return store.dispatch(actionMovieFetch({ id: parseInt(params.id) }));
   }
 
-  componentDidMount() {
+  fetchIfNeeded() {
     this.props.dispatch(
       actionMovieFetchIfNeeded({ id: parseInt(this.props.match.params.id) })
     );
+  }
+
+  componentDidMount() {
+    this.fetchIfNeeded();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.fetchIfNeeded();
+    }
   }
 
   render() {
@@ -31,28 +41,22 @@ class Movie extends Component {
         ) : (
           <article className="movie">
             <div className="card">
-              <div className="row no-gutters">
-                <div className="col-md-4">
-                  <img src={movie.poster_path} className="card-img" alt="..." />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h1 className="card-title">
-                      {`${movie.title} `}
-                      <span className="badge badge-pill badge-danger">
-                        {movie.vote_average}
-                      </span>
-                    </h1>
-                    <p className="card-text">
-                      <small>{movie.tagline}</small>
-                    </p>
-                    <p className="card-text">
-                      <small>{`${parsedDate}`}</small>{" "}
-                      <small>{`${movie.runtime} min`}</small>
-                    </p>
-                    <p className="card-text">{movie.overview}</p>
-                  </div>
-                </div>
+              <img src={movie.poster_path} className="card-img" alt="..." />
+              <div className="card-body">
+                <h1 className="card-title">
+                  {`${movie.title} `}
+                  <span className="badge badge-pill badge-danger">
+                    {movie.vote_average}
+                  </span>
+                </h1>
+                <p className="card-text">
+                  <small>{movie.tagline}</small>
+                </p>
+                <p className="card-text">
+                  <small>{`${parsedDate}`}</small>{" "}
+                  <small>{`${movie.runtime} min`}</small>
+                </p>
+                <p className="card-text">{movie.overview}</p>
               </div>
             </div>
           </article>

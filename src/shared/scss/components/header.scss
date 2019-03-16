@@ -1,0 +1,35 @@
+.header {
+  flex-shrink: 0;
+  min-height: 60px;
+  padding: 10px 0 20px;
+  background: transparent;
+
+  nav {
+    width: 100%;
+    color: $red;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    .navbar-brand {
+      color: $red;
+      font-weight: bold;
+    }
+  }
+
+  .form-group {
+    flex-direction: column;
+    color: $red;
+  }
+
+  .action-wrapper {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

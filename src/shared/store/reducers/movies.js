@@ -1,16 +1,23 @@
 import {
   ACTION_TYPE_MOVIES_FETCH,
-  ACTION_TYPE_MOVIES_FETCHING
-} from '../actions/movies';
+  ACTION_TYPE_MOVIES_FETCHING,
+  ACTION_TYPE_SEARCH_CHANGE
+} from "../actions/movies";
 
 const initialState = {
   movies: [],
+  searchBy: "title",
   error: false,
   loading: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ACTION_TYPE_SEARCH_CHANGE:
+      return {
+        ...state,
+        searchBy: action.searchBy
+      };
     case ACTION_TYPE_MOVIES_FETCHING:
       return {
         ...state,
