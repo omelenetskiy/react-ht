@@ -4,33 +4,28 @@ import { Route, Switch } from "react-router-dom";
 import { hot } from "react-hot-loader/root";
 
 import Header from "./layout/header/Header";
-import MoviePreview from "./layout/moviePreview/MoviePreview";
-import SearchInput from "./common/search/SearchInput";
-import Filter from "./common/filter/Filter";
 import Footer from "./layout/footer/Footer";
+import Filter from "./common/filter/Filter";
 import Home from "./layout/home/Home";
+import MoviePage from "./layout/moviePage/MoviePage";
 import NotFound from "./common/notFound/NotFound";
+import ErrorBoundary from "./common/errorBoundary/ErrorBoundary";
 import Test from "./Test";
 
-const App = props => (
+const App = () => (
   <Fragment>
     <Test />
-    <Header>
-      <Switch>
-        <Route exact path="/" component={SearchInput} />
-        <Route path="/movie/:id" component={MoviePreview} />
-      </Switch>
-    </Header>
+    <Header />
+
     <Filter />
-    <section className="main">
-      <div className="container">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/movie/:id" component={Home} />
-          <Route path="/*" component={NotFound} />
-        </Switch>
-      </div>
-    </section>
+    <ErrorBoundary>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/movie/:id" component={MoviePage} />
+        <Route path="/*" component={NotFound} />
+      </Switch>
+    </ErrorBoundary>
+
     <Footer />
   </Fragment>
 );

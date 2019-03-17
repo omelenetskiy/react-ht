@@ -2,8 +2,8 @@
   color: $danger-color;
 
   .search-control {
-    width: 80%;
-    padding: 15px;
+    width: 100%;
+    padding: 15px 0px;
     background-color: black;
     border: none;
     border-bottom: 5px solid $danger-color;
@@ -12,5 +12,11 @@
     &:focus {
       outline: 2px solid $danger-color;
     }
+  }
+
+  .action-wrapper {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
   }
 }

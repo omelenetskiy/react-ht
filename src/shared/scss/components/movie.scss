@@ -1,0 +1,17 @@
+.movie {
+  .card {
+    color: #fff;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+
+    .card-title {
+      color: $red;
+    }
+
+    .card-img {
+      width: 250px;
+      height: 100%;
+    }
+  }
+}

@@ -1,29 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
-const Header = ({ children }) => (
-  <header className="header">
-    <div className="container">
-      <nav>
-        <Link className="navbar-brand" to="/">
-          Netflixroulette
-        </Link>
-        <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </nav>
-      {children}
-    </div>
+const Header = ({ location }) => (
+  <header>
+    <Link to="/">Netflixroulette</Link>
+    {location.pathname !== "/" && (
+      <Link className="btn" to="/">
+        Search
+      </Link>
+    )}
   </header>
 );
 
-Header.propTypes = {
-  children: PropTypes.element
-};
-
-Header.defaultProps = {
-  children: null
-};
-
-export default Header;
+export default withRouter(Header);

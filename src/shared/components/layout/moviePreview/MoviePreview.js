@@ -5,8 +5,9 @@ import {
   actionMovieFetch,
   actionMovieFetchIfNeeded
 } from "../../../store/actions/movie";
+import { withRouter } from "react-router";
 
-class Movie extends Component {
+class MoviePreview extends Component {
   static fetchData({ store, params }) {
     return store.dispatch(actionMovieFetch({ id: parseInt(params.id) }));
   }
@@ -41,13 +42,15 @@ class Movie extends Component {
         ) : (
           <article className="movie">
             <div className="card">
-              <img src={movie.poster_path} className="card-img" alt="..." />
+              <img
+                src={movie.poster_path}
+                className="card-img"
+                alt={movie.title}
+              />
               <div className="card-body">
                 <h1 className="card-title">
                   {`${movie.title} `}
-                  <span className="badge badge-pill badge-danger">
-                    {movie.vote_average}
-                  </span>
+                  <span>{movie.vote_average}</span>
                 </h1>
                 <p className="card-text">
                   <small>{movie.tagline}</small>
@@ -72,4 +75,4 @@ function moviesState(state) {
   };
 }
 
-export default connect(moviesState)(Movie);
+export default withRouter(connect(moviesState)(MoviePreview));

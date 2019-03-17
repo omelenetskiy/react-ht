@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import {
   actionSearcByChange,
   actionMoviesFetch
@@ -12,6 +13,11 @@ class SearchInput extends Component {
 
   hangleSearch = e => {
     e.preventDefault();
+    // const { history } = this.props;
+    // history.push(
+    //   `movies?search=${this.searchInputRef.current.value}&searchBy=title`
+    // );
+
     this.props.moviesFetch(this.searchInputRef.current.value);
 
     console.log(this.searchInputRef.current.value);
@@ -23,11 +29,15 @@ class SearchInput extends Component {
     changeSearchBy(e.target.value);
   };
 
+  getInputValue = () => {
+    return this.searchInputRef.current.value;
+  };
+
   render() {
     return (
       <form className="search-form">
-        <div className="form-group row">
-          <h2 className="col">FIND YOUR MOVIE</h2>
+        <div className="form-group">
+          <h2>FIND YOUR MOVIE</h2>
           <input
             type="text"
             className="search-control"
@@ -36,9 +46,9 @@ class SearchInput extends Component {
           />
         </div>
         <div className="action-wrapper">
-          <div className="btn-group btn-group-toggle" data-toggle="buttons">
+          <div className="btn-group">
             Search by:
-            <label className="btn btn-danger btn-sm active">
+            <label className="btn">
               <input
                 type="radio"
                 value="title"
@@ -49,7 +59,7 @@ class SearchInput extends Component {
               />{" "}
               TITLE
             </label>
-            <label className="btn btn-danger btn-sm">
+            <label className="btn">
               <input
                 type="radio"
                 value="genres"
@@ -60,7 +70,7 @@ class SearchInput extends Component {
               GENRE
             </label>
           </div>
-          <button className="btn btn-danger" onClick={this.hangleSearch}>
+          <button className="btn btn-outline" onClick={this.hangleSearch}>
             SEARCH
           </button>
         </div>
@@ -80,7 +90,9 @@ const matDispatchToProps = dispatch => ({
   moviesFetch: value => dispatch(actionMoviesFetch(value))
 });
 
-export default connect(
-  moviesState,
-  matDispatchToProps
-)(SearchInput);
+export default withRouter(
+  connect(
+    moviesState,
+    matDispatchToProps
+  )(SearchInput)
+);

@@ -5,11 +5,12 @@ import {
   actionMoviesFetch,
   actionMoviesFetchIfNeeded
 } from "../../../store/actions/movies";
+import { withRouter } from "react-router";
 
-import SearchInput from "../../common/search/SearchInput";
+import MoviePreview from "../moviePreview/MoviePreview";
 import MovieList from "../movieList/MovieList";
 
-class Home extends Component {
+class MoviePage extends Component {
   static fetchData({ store }) {
     return store.dispatch(actionMoviesFetch());
   }
@@ -17,16 +18,15 @@ class Home extends Component {
   componentDidMount() {
     this.props.dispatch(actionMoviesFetchIfNeeded());
   }
-
   render() {
     const { moviesData } = this.props;
     const { movies } = moviesData;
     return (
       <Fragment>
         <Helmet>
-          <title>Movies</title>
+          <title>MoviePreview</title>
         </Helmet>
-        <SearchInput />
+        <MoviePreview />
         <section className="home">
           <MovieList movies={movies} />
         </section>
@@ -41,4 +41,4 @@ function moviesState(state) {
   };
 }
 
-export default connect(moviesState)(Home);
+export default withRouter(connect(moviesState)(MoviePage));
