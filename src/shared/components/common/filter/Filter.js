@@ -1,5 +1,21 @@
 import React, { Component, Fragment } from "react";
+import styled from "styled-components";
 import { connect } from "react-redux";
+import { getMoviesState } from "../../../store/selectors";
+
+const StyledFilter = styled.section`
+  width: 100%;
+  background-color: ${props => props.theme.stylishColor};
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+
+  .btn-group {
+    display: inline-flex;
+  }
+`;
 
 class Filter extends Component {
   state = {};
@@ -10,15 +26,14 @@ class Filter extends Component {
     } = this.props;
 
     return (
-      <section className="filter">
+      <StyledFilter>
         {movies && movies.length ? (
           <Fragment>
-            <span className="navbar-text">{`${movies &&
-              movies.length} movies found`}</span>
+            <span>{`${movies && movies.length} movies found`}</span>
             <div>
-              <span className="navbar-text">Sort by: </span>{" "}
-              <div className="btn-group btn-group-toggle" data-toggle="buttons">
-                <label className="btn btn-danger btn-sm active">
+              <span>Sort by: </span>{" "}
+              <div className="btn-group">
+                <label>
                   <input
                     type="radio"
                     name="options"
@@ -27,7 +42,7 @@ class Filter extends Component {
                   />{" "}
                   release date
                 </label>
-                <label className="btn btn-danger btn-sm">
+                <label>
                   <input
                     type="radio"
                     name="options"
@@ -42,15 +57,15 @@ class Filter extends Component {
         ) : (
           ""
         )}
-      </section>
+      </StyledFilter>
     );
   }
 }
 
-function moviesState(state) {
+const mapStateToProps = state => {
   return {
-    movies: state.movies
+    movies: getMoviesState(state)
   };
-}
+};
 
-export default connect(moviesState)(Filter);
+export default connect(mapStateToProps)(Filter);

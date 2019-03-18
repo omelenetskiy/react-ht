@@ -1,15 +1,39 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import {
-  actionSearcByChange,
-  actionMoviesFetch
-} from "../../../store/actions/movies";
+import { actionMoviesFetch } from "../../../store/actions/movies";
+import { getMoviesState } from "../../../store/selectors";
+
+import BtnGroup from "../btnGroup/BtnGroup";
+import Button from "../button/Button";
+
+const StyledSearchForm = styled.div`
+  color: ${props => props.theme.dangerColor};
+
+  .search-control {
+    width: 100%;
+    padding: 15px 0px;
+    background-color: black;
+    border: none;
+    border-bottom: 5px solid ${props => props.theme.dangerColor};
+    margin: 10px 0px;
+    color: #fff;
+
+    &:focus {
+      outline: 2px solid ${props => props.theme.dangerColor};
+    }
+  }
+
+  .action-wrapper {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+`;
 
 class SearchInput extends Component {
   searchInputRef = React.createRef();
-  searchByTitleRef = React.createRef();
-  searchByGenreRef = React.createRef();
 
   hangleSearch = e => {
     e.preventDefault();
@@ -19,14 +43,6 @@ class SearchInput extends Component {
     // );
 
     this.props.moviesFetch(this.searchInputRef.current.value);
-
-    console.log(this.searchInputRef.current.value);
-    console.log(this.props.movies);
-  };
-
-  changeSearchBy = e => {
-    const { changeSearchBy } = this.props;
-    changeSearchBy(e.target.value);
   };
 
   getInputValue = () => {
@@ -35,7 +51,7 @@ class SearchInput extends Component {
 
   render() {
     return (
-      <form className="search-form">
+      <StyledSearchForm>
         <div className="form-group">
           <h2>FIND YOUR MOVIE</h2>
           <input
@@ -46,53 +62,27 @@ class SearchInput extends Component {
           />
         </div>
         <div className="action-wrapper">
-          <div className="btn-group">
-            Search by:
-            <label className="btn">
-              <input
-                type="radio"
-                value="title"
-                name="search"
-                ref={this.searchByTitleRef}
-                defaultChecked
-                onChange={this.changeSearchBy}
-              />{" "}
-              TITLE
-            </label>
-            <label className="btn">
-              <input
-                type="radio"
-                value="genres"
-                name="search"
-                ref={this.searchByGenreRef}
-                onChange={this.changeSearchBy}
-              />{" "}
-              GENRE
-            </label>
-          </div>
-          <button className="btn btn-outline" onClick={this.hangleSearch}>
-            SEARCH
-          </button>
+          <BtnGroup />
+          <Button onClick={this.hangleSearch}>SEARCH</Button>
         </div>
-      </form>
+      </StyledSearchForm>
     );
   }
 }
 
-function moviesState(state) {
+const mapStateToProps = state => {
   return {
-    movies: state.movies
+    movies: getMoviesState(state)
   };
-}
+};
 
 const matDispatchToProps = dispatch => ({
-  changeSearchBy: value => dispatch(actionSearcByChange(value)),
   moviesFetch: value => dispatch(actionMoviesFetch(value))
 });
 
 export default withRouter(
   connect(
-    moviesState,
+    mapStateToProps,
     matDispatchToProps
   )(SearchInput)
 );

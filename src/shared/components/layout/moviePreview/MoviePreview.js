@@ -6,6 +6,7 @@ import {
   actionMovieFetchIfNeeded
 } from "../../../store/actions/movie";
 import { withRouter } from "react-router";
+import { getMovieState } from "../../../store/selectors";
 
 class MoviePreview extends Component {
   static fetchData({ store, params }) {
@@ -69,10 +70,10 @@ class MoviePreview extends Component {
   }
 }
 
-function moviesState(state) {
+const mapStateToProps = state => {
   return {
-    movieData: state.movie
+    movieData: getMovieState(state)
   };
-}
+};
 
-export default withRouter(connect(moviesState)(MoviePreview));
+export default withRouter(connect(mapStateToProps)(MoviePreview));

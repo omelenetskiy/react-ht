@@ -6,6 +6,7 @@ import {
   actionMoviesFetchIfNeeded
 } from "../../../store/actions/movies";
 import { withRouter } from "react-router";
+import { getMoviesState } from "../../../store/selectors";
 
 import MoviePreview from "../moviePreview/MoviePreview";
 import MovieList from "../movieList/MovieList";
@@ -35,10 +36,10 @@ class MoviePage extends Component {
   }
 }
 
-function moviesState(state) {
+const mapStateToProps = state => {
   return {
-    moviesData: state.movies
+    moviesData: getMoviesState(state)
   };
-}
+};
 
-export default withRouter(connect(moviesState)(MoviePage));
+export default withRouter(connect(mapStateToProps)(MoviePage));

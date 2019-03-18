@@ -1,5 +1,20 @@
-import React from "react";
+import styled from "styled-components";
 
-const Button = () => <button className="btn">button</button>;
+export default styled.button`
+  border: 0;
+  padding: 7px 15px;
+  color: #fff;
+  background-color: ${props => props.theme.dangerColor};
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
 
-export default Button;
+  &:hover {
+    background-color: ${props => props.theme.dangerColorDark};
+  }
+`;

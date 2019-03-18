@@ -5,6 +5,7 @@ import {
   actionMoviesFetch,
   actionMoviesFetchIfNeeded
 } from "../../../store/actions/movies";
+import { getMoviesState } from "../../../store/selectors";
 
 import SearchInput from "../../common/search/SearchInput";
 import MovieList from "../movieList/MovieList";
@@ -35,10 +36,10 @@ class Home extends Component {
   }
 }
 
-function moviesState(state) {
+const mapStateToProps = state => {
   return {
-    moviesData: state.movies
+    moviesData: getMoviesState(state)
   };
-}
+};
 
-export default connect(moviesState)(Home);
+export default connect(mapStateToProps)(Home);

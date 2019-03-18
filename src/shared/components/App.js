@@ -10,24 +10,29 @@ import Home from "./layout/home/Home";
 import MoviePage from "./layout/moviePage/MoviePage";
 import NotFound from "./common/notFound/NotFound";
 import ErrorBoundary from "./common/errorBoundary/ErrorBoundary";
-import Test from "./Test";
+
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styled/theme";
+import { GlobalStyle } from "./styled/globalStyle";
 
 const App = () => (
-  <Fragment>
-    <Test />
-    <Header />
+  <ThemeProvider theme={theme}>
+    <Fragment>
+      <GlobalStyle />
+      <Header />
 
-    <Filter />
-    <ErrorBoundary>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/movie/:id" component={MoviePage} />
-        <Route path="/*" component={NotFound} />
-      </Switch>
-    </ErrorBoundary>
+      <Filter />
+      <ErrorBoundary>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/movie/:id" component={MoviePage} />
+          <Route path="/*" component={NotFound} />
+        </Switch>
+      </ErrorBoundary>
 
-    <Footer />
-  </Fragment>
+      <Footer />
+    </Fragment>
+  </ThemeProvider>
 );
 
 export default hot(App);

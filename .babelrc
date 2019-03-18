@@ -4,6 +4,18 @@
     "react-hot-loader/babel",
     "@babel/plugin-transform-strict-mode",
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "babel-plugin-styled-components",
+    [
+      "file-loader",
+      {
+        "name": "[hash].[ext]",
+        "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
+        "publicPath": "/images",
+        "outputPath": "./static/images",
+        "context": "",
+        "limit": 0
+      }
+    ]
   ]
 }

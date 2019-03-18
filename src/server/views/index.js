@@ -1,10 +1,12 @@
-const index = (helmet = {}, appHtml = '', initialState = {}) =>
+const index = (helmet = {}, appHtml = "", initialState = {}, styleTags) =>
   `<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${helmet.title.toString()}
+
+    ${styleTags}
 </head>
 <body>
     <div id="root">${appHtml}</div>
