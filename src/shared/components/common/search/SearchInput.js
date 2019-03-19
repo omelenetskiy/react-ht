@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { actionMoviesFetch } from "../../../store/actions/movies";
-import { getMoviesState } from "../../../store/selectors";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { actionMoviesFetch } from '../../../store/actions/movies';
+import { getMoviesState } from '../../../store/selectors';
 
-import BtnGroup from "../btnGroup/BtnGroup";
-import Button from "../button/Button";
+import BtnGroup from '../btnGroup/BtnGroup';
+import Button from '../button/Button';
 
-const StyledSearchForm = styled.div`
+const StyledSearchForm = styled.form`
   color: ${props => props.theme.dangerColor};
 
   .search-control {
@@ -63,7 +63,7 @@ class SearchInput extends Component {
         </div>
         <div className="action-wrapper">
           <BtnGroup />
-          <Button onClick={this.hangleSearch}>SEARCH</Button>
+          <Button onClick={this.hangleSearch}>Search</Button>
         </div>
       </StyledSearchForm>
     );

@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { actionSearcByChange } from "../../../store/actions/movies";
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { actionSearcByChange } from '../../../store/actions/movies';
 
-import Button from "../button/Button";
+import Button from '../button/Button';
 
 const StyledBtnGroup = styled.div`
   display: flex;
@@ -37,15 +37,15 @@ class BtnGroup extends Component {
   state = {
     buttons: [
       {
-        title: "Title",
-        value: "title",
-        name: "search",
+        title: 'Title',
+        value: 'title',
+        name: 'search',
         checked: true
       },
       {
-        title: "Genres",
-        value: "genres",
-        name: "search",
+        title: 'Genres',
+        value: 'genres',
+        name: 'search',
         checked: false
       }
     ]
@@ -63,7 +63,7 @@ class BtnGroup extends Component {
         <span>Search by:</span>
 
         {buttons.map(button => (
-          <Fragment>
+          <Fragment key={button.title}>
             <input
               type="radio"
               value={button.value}
@@ -72,7 +72,7 @@ class BtnGroup extends Component {
               defaultChecked={button.checked}
               onChange={this.searchBy}
             />
-            <StyledLabel as="label" key={button.title} htmlFor={button.title}>
+            <StyledLabel as="label" htmlFor={button.title}>
               {button.title}
             </StyledLabel>
           </Fragment>

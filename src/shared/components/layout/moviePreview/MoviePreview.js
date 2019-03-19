@@ -1,12 +1,29 @@
-import React, { Component, Fragment } from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
 import {
   actionMovieFetch,
   actionMovieFetchIfNeeded
-} from "../../../store/actions/movie";
-import { withRouter } from "react-router";
-import { getMovieState } from "../../../store/selectors";
+} from '../../../store/actions/movie';
+import { withRouter } from 'react-router';
+import { getMovieState } from '../../../store/selectors';
+
+const StyledMovie = styled.article`
+  color: #fff;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+
+  .card-title {
+    color: ${props => props.theme.dangerColor};
+  }
+
+  .card-img {
+    width: 250px;
+    height: 100%;
+  }
+`;
 
 class MoviePreview extends Component {
   static fetchData({ store, params }) {
@@ -38,32 +55,31 @@ class MoviePreview extends Component {
         <Helmet>
           <title>{`${movie.title}`}</title>
         </Helmet>
+
         {this.props.movieData.loading ? (
-          "Loading..."
+          'Loading...'
         ) : (
-          <article className="movie">
-            <div className="card">
-              <img
-                src={movie.poster_path}
-                className="card-img"
-                alt={movie.title}
-              />
-              <div className="card-body">
-                <h1 className="card-title">
-                  {`${movie.title} `}
-                  <span>{movie.vote_average}</span>
-                </h1>
-                <p className="card-text">
-                  <small>{movie.tagline}</small>
-                </p>
-                <p className="card-text">
-                  <small>{`${parsedDate}`}</small>{" "}
-                  <small>{`${movie.runtime} min`}</small>
-                </p>
-                <p className="card-text">{movie.overview}</p>
-              </div>
+          <StyledMovie>
+            <img
+              src={movie.poster_path}
+              className="card-img"
+              alt={movie.title}
+            />
+            <div className="card-body">
+              <h1 className="card-title">
+                {`${movie.title} `}
+                <span>{movie.vote_average}</span>
+              </h1>
+              <p className="card-text">
+                <small>{movie.tagline}</small>
+              </p>
+              <p className="card-text">
+                <small>{`${parsedDate}`}</small>{' '}
+                <small>{`${movie.runtime} min`}</small>
+              </p>
+              <p className="card-text">{movie.overview}</p>
             </div>
-          </article>
+          </StyledMovie>
         )}
       </Fragment>
     );

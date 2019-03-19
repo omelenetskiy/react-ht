@@ -1,9 +1,15 @@
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
 
-import MovieCard from "../movieCard/MovieCard";
+import MovieCard from '../movieCard/MovieCard';
+
+const StyledMovieCardWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`;
 
 const MovieList = ({ movies }) => (
-  <div className="card-wrapper">
+  <StyledMovieCardWrapper>
     {movies && movies.length ? (
       movies.map(movie => {
         const date = Date.parse(movie.release_date);
@@ -15,7 +21,7 @@ const MovieList = ({ movies }) => (
     ) : (
       <p>No films found</p>
     )}
-  </div>
+  </StyledMovieCardWrapper>
 );
 
 export default MovieList;

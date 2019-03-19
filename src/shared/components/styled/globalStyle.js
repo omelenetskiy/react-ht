@@ -1,7 +1,9 @@
-import { createGlobalStyle } from "styled-components";
-import bg from "../../../../static/images/collage.jpg";
+import { createGlobalStyle } from 'styled-components';
+import bg from '../../../../static/images/collage.jpg';
 
 export const GlobalStyle = createGlobalStyle`
+  @import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
+
   html,
   body {
     margin: 0;
