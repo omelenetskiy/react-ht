@@ -7,6 +7,7 @@ import { getMoviesState } from '../../../store/selectors';
 
 import BtnGroup from '../btnGroup/BtnGroup';
 import Button from '../button/Button';
+import Filter from '../filter/Filter';
 
 const StyledSearchForm = styled.form`
   color: ${props => props.theme.dangerColor};
@@ -65,6 +66,7 @@ class SearchInput extends Component {
           <BtnGroup />
           <Button onClick={this.hangleSearch}>Search</Button>
         </div>
+        <Filter />
       </StyledSearchForm>
     );
   }

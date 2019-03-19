@@ -1,14 +1,14 @@
-import React, { Component, Fragment } from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
 import {
   actionMoviesFetch,
   actionMoviesFetchIfNeeded
-} from "../../../store/actions/movies";
-import { getMoviesState } from "../../../store/selectors";
+} from '../../../store/actions/movies';
+import { getMoviesState } from '../../../store/selectors';
 
-import SearchInput from "../../common/search/SearchInput";
-import MovieList from "../movieList/MovieList";
+import SearchInput from '../../common/search/SearchInput';
+import MovieList from '../movieList/MovieList';
 
 class Home extends Component {
   static fetchData({ store }) {

@@ -1,24 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import {
-  actionMoviesFetch,
-  actionMoviesFetchIfNeeded
-} from "../../../store/actions/movies";
-import { withRouter } from "react-router";
-import { getMoviesState } from "../../../store/selectors";
+import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { withRouter } from 'react-router';
+import { getMoviesState } from '../../../store/selectors';
 
-import MoviePreview from "../moviePreview/MoviePreview";
-import MovieList from "../movieList/MovieList";
+import MoviePreview from '../moviePreview/MoviePreview';
+import MovieList from '../movieList/MovieList';
+import { connect } from 'react-redux';
 
 class MoviePage extends Component {
-  static fetchData({ store }) {
-    return store.dispatch(actionMoviesFetch());
-  }
-
-  componentDidMount() {
-    this.props.dispatch(actionMoviesFetchIfNeeded());
-  }
   render() {
     const { moviesData } = this.props;
     const { movies } = moviesData;
@@ -28,9 +17,6 @@ class MoviePage extends Component {
           <title>MoviePreview</title>
         </Helmet>
         <MoviePreview />
-        <section className="home">
-          <MovieList movies={movies} />
-        </section>
       </Fragment>
     );
   }

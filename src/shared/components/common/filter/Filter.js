@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { getMoviesState } from "../../../store/selectors";
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { getMoviesState } from '../../../store/selectors';
+import { actionSortByChange } from '../../../store/actions/movies';
 
 const StyledFilter = styled.section`
   width: 100%;
@@ -18,7 +19,27 @@ const StyledFilter = styled.section`
 `;
 
 class Filter extends Component {
-  state = {};
+  state = {
+    buttons: [
+      {
+        title: 'release date',
+        value: 'release_date',
+        name: 'filter',
+        checked: true
+      },
+      {
+        title: 'rating',
+        value: 'vote_average',
+        name: 'filter',
+        checked: false
+      }
+    ]
+  };
+
+  sortBy = e => {
+    const { changeSortBy } = this.props;
+    changeSortBy(e.target.value);
+  };
 
   render() {
     const {
@@ -27,36 +48,33 @@ class Filter extends Component {
 
     return (
       <StyledFilter>
-        {movies && movies.length ? (
-          <Fragment>
-            <span>{`${movies && movies.length} movies found`}</span>
-            <div>
-              <span>Sort by: </span>{" "}
-              <div className="btn-group">
-                <label>
-                  <input
-                    type="radio"
-                    name="options"
-                    checked
-                    onChange={() => console.log("changed")}
-                  />{" "}
-                  release date
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="options"
-                    checked
-                    onChange={() => console.log("changed")}
-                  />{" "}
-                  raiting
-                </label>
-              </div>
+        <Fragment>
+          <span>{`${movies && movies.length} movies found`}</span>
+          <div>
+            <span>Sort by: </span>{' '}
+            <div className="btn-group">
+              <label>
+                <input
+                  type="radio"
+                  name="options"
+                  value="release_date"
+                  onChange={this.sortBy}
+                />{' '}
+                release date
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="options"
+                  value="vote_average"
+                  defaultChecked
+                  onChange={this.sortBy}
+                />
+                rating
+              </label>
             </div>
-          </Fragment>
-        ) : (
-          ""
-        )}
+          </div>
+        </Fragment>
       </StyledFilter>
     );
   }
@@ -68,4 +86,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Filter);
+const matDispatchToProps = dispatch => ({
+  changeSortBy: value => dispatch(actionSortByChange(value))
+});
+
+export default connect(
+  mapStateToProps,
+  matDispatchToProps
+)(Filter);

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { actionSearcByChange } from '../../../store/actions/movies';
+import { actionSearchByChange } from '../../../store/actions/movies';
 
 import Button from '../button/Button';
 
@@ -83,7 +83,7 @@ class BtnGroup extends Component {
 }
 
 const matDispatchToProps = dispatch => ({
-  changeSearchBy: value => dispatch(actionSearcByChange(value))
+  changeSearchBy: value => dispatch(actionSearchByChange(value))
 });
 
 export default connect(
