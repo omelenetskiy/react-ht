@@ -2,12 +2,11 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import {
   actionMovieFetch,
   actionMovieFetchIfNeeded
 } from '../../../store/actions/movie';
-import { actionMoviesMatchByGenre } from '../../../store/actions/movies';
-import { withRouter } from 'react-router';
 import { getMovieState, getMoviesState } from '../../../store/selectors';
 
 import MovieList from '../movieList/MovieList';

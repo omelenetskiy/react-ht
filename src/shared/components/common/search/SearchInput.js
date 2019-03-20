@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { actionMoviesFetch } from '../../../store/actions/movies';
 import { getMoviesState } from '../../../store/selectors';
+import qs from 'query-string';
 
 import BtnGroup from '../btnGroup/BtnGroup';
 import Button from '../button/Button';
@@ -38,12 +39,12 @@ class SearchInput extends Component {
 
   hangleSearch = e => {
     e.preventDefault();
-    // const { history } = this.props;
-    // history.push(
-    //   `movies?search=${this.searchInputRef.current.value}&searchBy=title`
-    // );
-
+    const { history } = this.props;
+    const { searchBy } = this.props.movies;
+    const searchQuery = { searchBy, search: this.searchInputRef.current.value };
+    const searchString = qs.stringify(searchQuery);
     this.props.moviesFetch(this.searchInputRef.current.value);
+    history.replace(`/search/${searchString}`);
   };
 
   getInputValue = () => {

@@ -47,8 +47,6 @@ app.get('*', (request, response) => {
   let status = 200;
   const sheet = new ServerStyleSheet();
 
-  console.log(request.url);
-
   const matches = routes.reduce((matches, route) => {
     const match = matchPath(request.url, route.path, route);
     if (match && match.isExact) {

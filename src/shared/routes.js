@@ -8,6 +8,10 @@ const routes = [
     exact: true
   },
   {
+    path: '/search/:query',
+    component: Home
+  },
+  {
     path: '/movie/:id',
     component: MoviePreview
   }

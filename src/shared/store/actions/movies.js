@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { push } from 'react-router-redux';
-import qs from 'query-string';
 
 export const ACTION_TYPE_MOVIES_FETCH = 'ACTION_TYPE_MOVIES_FETCH';
 export const ACTION_TYPE_MOVIES_FETCHING = 'ACTION_TYPE_MOVIES_FETCHING';
@@ -30,12 +28,6 @@ export function actionMoviesFetch(value) {
       movies: { searchBy, sortBy }
     } = getState();
 
-    const searchQuery = { sortBy, searchBy, search: value };
-
-    const searchString = qs.stringify(searchQuery);
-
-    console.log(searchString);
-
     try {
       const response = await axios.get(query(sortBy, searchBy, value));
       if (response.status === 200) {
@@ -57,6 +49,26 @@ export function actionMoviesMatchByGenre(genres) {
     try {
       const response = await axios.get(
         `https://reactjs-cdp.herokuapp.com/movies?filter=${genres}`
+      );
+      if (response.status === 200) {
+        dispatch({
+          type: ACTION_TYPE_MOVIES_FETCH,
+          movies: response.data.data
+        });
+      } else {
+        console.error(response);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+export function actionMoviesFetchByQueryString(query) {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(
+        `https://reactjs-cdp.herokuapp.com/movies?${query}`
       );
       if (response.status === 200) {
         dispatch({
