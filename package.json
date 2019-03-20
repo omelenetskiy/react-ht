@@ -8,7 +8,8 @@
     "dev": "babel-node src/server/server.js",
     "wp": "webpack-dev-server --hot --config webpack.config.babel.js",
     "build:prod": "export NODE_ENV=production && webpack -p",
-    "start:prod": "export NODE_ENV=production && npm run build:prod && nodemon --ignore src/static/ --exec babel-node -- src/server/index.js"
+    "start:prod": "export NODE_ENV=production && npm run build:prod && nodemon --ignore src/static/ --exec babel-node -- src/server/index.js",
+    "storybook": "start-storybook"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "^7.0.0",
+    "@storybook/react": "^5.0.3",
     "autoprefixer": "^9.4.10",
     "babel-loader": "8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
