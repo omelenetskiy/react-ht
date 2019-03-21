@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import { Server } from 'http';
 import express from 'express';
 import React from 'react';
@@ -10,7 +11,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-
 // App Imports
 import { rootReducer } from '../shared/store/store';
 
@@ -18,7 +18,7 @@ import routes from '../shared/routes';
 import App from '../shared/components/App';
 import index from './views/index';
 
-import config from '../../webpack.config.dev';
+import config from '../../webpack.config';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -95,6 +95,7 @@ app.get('*', (request, response) => {
         const styleTags = sheet.getStyleTags();
 
         let html = index(helmet, appHtml, initialState, styleTags);
+        fs.writeFileSync('static/index.html', html);
 
         // Reset the state on server
         store.dispatch({
@@ -112,8 +113,8 @@ app.get('*', (request, response) => {
 });
 
 // Start Server
-const port = process.env.PORT || 3000;
-const env = process.env.NODE_ENV || 'production';
+const port = process.env.PORT || 5000;
+const env = process.env.MODE || 'development';
 server.listen(port, error => {
   if (error) {
     return console.error(error);

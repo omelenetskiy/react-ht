@@ -15,6 +15,7 @@ const index = (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
     </script>
     
     <script type="text/javascript" src="/bundle.js"></script>
+    <script type="text/javascript" src="/bundle-server.js"></script>
 </body>
 </html>`;
 

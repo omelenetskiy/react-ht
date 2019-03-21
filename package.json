@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "export NODE_ENV=development && webpack --config webpack.config.babel.js",
+    "build": "export MODE=production && webpack --config webpack.config.js && webpack --config webpack.server.js",
     "dev": "babel-node src/server/server.js",
-    "wp": "webpack-dev-server --hot --config webpack.config.babel.js",
-    "build:prod": "export NODE_ENV=production && webpack -p",
-    "start:prod": "export NODE_ENV=production && npm run build:prod && nodemon --ignore src/static/ --exec babel-node -- src/server/index.js",
     "storybook": "start-storybook",
     "test": "jest --coverage --colors"
   },
@@ -69,6 +66,7 @@
     "@hot-loader/react-dom": "^16.8.4",
     "axios": "0.18.0",
     "babel-plugin-file-loader": "^1.1.1",
+    "dotenv": "^7.0.0",
     "express": "5.0.0-alpha.7",
     "query-string": "^6.4.0",
     "react": "16.8.4",
