@@ -10,7 +10,7 @@ import {
 import { getMoviesState } from '../../../store/selectors';
 import qs from 'query-string';
 
-import SearchInput from '../../common/search/SearchInput';
+import SearchForm from '../../common/searchForm/SearchForm';
 import MovieList from '../movieList/MovieList';
 
 class Home extends Component {
@@ -35,7 +35,7 @@ class Home extends Component {
         <Helmet>
           <title>Movies</title>
         </Helmet>
-        <SearchInput />
+        <SearchForm />
         <section className="home">
           <MovieList movies={movies} />
         </section>

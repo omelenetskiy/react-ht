@@ -1,20 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
-const StyledHeader = styled.header`
-  min-height: 30px;
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-`;
+import { appTitle } from '../../../../config/moviesApp';
+import StyledHeader from '../../styled/header';
 
 const Header = ({ location }) => (
   <StyledHeader>
-    <Link to="/">Netflixroulette</Link>
-    {location.pathname !== "/" && <Link to="/">Search</Link>}
+    <Link to="/">{appTitle}</Link>
+    {location.pathname !== '/' && <Link to="/">Search</Link>}
   </StyledHeader>
 );
 

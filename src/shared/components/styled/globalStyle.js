@@ -1,9 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import reboot from 'styled-reboot';
 import bg from '../../../../static/images/collage.jpg';
 
 export const GlobalStyle = createGlobalStyle`
-  ${reboot()}
   @import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
 
   html,
@@ -26,6 +24,8 @@ export const GlobalStyle = createGlobalStyle`
 
   #root {
     height: 100vh;
+    max-width: ${props => props.theme.maxPageWidth};
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
   }
@@ -36,7 +36,8 @@ export const GlobalStyle = createGlobalStyle`
   
     &:active,
     &:link,
-    &:visited {
+    &:visited,
+    &:hover {
       color: ${props => props.theme.dangerColor};
     }
   }

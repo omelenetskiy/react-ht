@@ -1,20 +1,10 @@
-import styled from "styled-components";
+import React from 'react';
+import StyledButton from '../../styled/button';
 
-export default styled.button`
-  border: 0;
-  padding: 7px 15px;
-  color: #fff;
-  background-color: ${props => props.theme.dangerColor};
-  font-weight: bold;
-  border-radius: 3px;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+const Button = ({ children, onClick, size }) => (
+  <StyledButton size={size} onClick={onClick}>
+    {children}
+  </StyledButton>
+);
 
-  &:hover {
-    background-color: ${props => props.theme.dangerColorDark};
-  }
-`;
+export default Button;
