@@ -1,9 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { actionSearchByChange } from '../../../store/actions/movies';
-
-import { searchByButtons } from '../../../../config/buttonGroups';
 
 import Button from '../../styled/button';
 import Checkbox from './checkbox/Checkbox';
@@ -18,37 +14,21 @@ const StyledLabel = styled(Button)`
   transition: all 0.1s ease-in-out;
 `;
 
-class ButtonGroup extends Component {
-  toggleSearchBy = e => {
-    const { changeSearchBy } = this.props;
-    changeSearchBy(e.target.value);
-  };
+const ButtonGroup = ({ controls, toggleSearchBy, color }) => (
+  <StyledButtonGroup>
+    <StyledFilterTitle color={color}>{controls.title}</StyledFilterTitle>
 
-  render() {
-    return (
-      <StyledButtonGroup>
-        <StyledFilterTitle light>{searchByButtons.title}</StyledFilterTitle>
+    <div className="filter-buttons">
+      {controls.buttons.map(button => (
+        <Fragment key={button.title}>
+          <Checkbox button={button} toggleSearchBy={toggleSearchBy} />
+          <StyledLabel as="label" htmlFor={button.title}>
+            {button.title}
+          </StyledLabel>
+        </Fragment>
+      ))}
+    </div>
+  </StyledButtonGroup>
+);
 
-        <div className="filter-buttons">
-          {searchByButtons.buttons.map(button => (
-            <Fragment key={button.title}>
-              <Checkbox button={button} onChange={this.toggleSearchBy} />
-              <StyledLabel as="label" htmlFor={button.title}>
-                {button.title}
-              </StyledLabel>
-            </Fragment>
-          ))}
-        </div>
-      </StyledButtonGroup>
-    );
-  }
-}
-
-const matDispatchToProps = dispatch => ({
-  changeSearchBy: value => dispatch(actionSearchByChange(value))
-});
-
-export default connect(
-  null,
-  matDispatchToProps
-)(ButtonGroup);
+export default ButtonGroup;

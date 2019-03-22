@@ -5,7 +5,10 @@ import MovieCard from '../movieCard/MovieCard';
 
 const StyledMovieCardWrapper = styled.div`
   display: flex;
+  padding: 15px 0;
   flex-flow: row wrap;
+  justify-content: center;
+  background: #fff;
 `;
 
 const MovieList = ({ movies }) => (

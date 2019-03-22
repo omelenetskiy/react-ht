@@ -4,6 +4,10 @@ import bg from '../../../../static/images/collage.jpg';
 export const GlobalStyle = createGlobalStyle`
   @import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
 
+  * {
+    box-sizing: border-box;
+  }
+  
   html,
   body {
     margin: 0;

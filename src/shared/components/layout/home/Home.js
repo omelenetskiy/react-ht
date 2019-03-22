@@ -15,12 +15,13 @@ import MovieList from '../movieList/MovieList';
 
 class Home extends Component {
   static fetchData({ store, params }) {
+    console.log('params', params);
     if (params.query) {
       const parsed = qs.parse(params.query);
       const stringified = qs.stringify(parsed);
       return store.dispatch(actionMoviesFetchByQueryString(stringified));
     }
-    return store.dispatch(actionMoviesFetch());
+    return store.dispatch(actionMoviesFetchByQueryString());
   }
 
   componentDidMount() {

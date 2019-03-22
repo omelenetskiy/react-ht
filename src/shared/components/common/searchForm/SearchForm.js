@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { actionMoviesFetch } from '../../../store/actions/movies';
+import { actionMoviesFetchByQueryString } from '../../../store/actions/movies';
 import { getMoviesState } from '../../../store/selectors';
 import qs from 'query-string';
 
@@ -10,7 +10,7 @@ import { searchFormTitle } from '../../../../config/moviesApp';
 
 import Title from '../searchForm/title/Title';
 import Input from '../searchForm/input/Input';
-import Filter from '../filter/Filter';
+import SortFilter from '../sortFilter/SortFilter';
 import SearchFilter from '../searchFilter/SearchFilter';
 
 const StyledSearchForm = styled.form`
@@ -29,8 +29,12 @@ class SearchForm extends Component {
     const { searchBy } = this.props.movies;
     const searchQuery = { searchBy, search: inputValue };
     const searchString = qs.stringify(searchQuery);
-    this.props.moviesFetch(inputValue);
-    history.replace(`/search/${searchString}`);
+    this.props.moviesFetch(searchString);
+    console.log(searchString);
+    history.push({
+      pathname: '/search',
+      search: searchString
+    });
   };
 
   handleChange = e => {
@@ -46,7 +50,7 @@ class SearchForm extends Component {
         <Title>{searchFormTitle}</Title>
         <Input placeholder="Find your movie..." onChange={this.handleChange} />
         <SearchFilter handleSearch={this.handleSearch} />
-        <Filter />
+        <SortFilter />
       </StyledSearchForm>
     );
   }
@@ -59,7 +63,7 @@ const mapStateToProps = state => {
 };
 
 const matDispatchToProps = dispatch => ({
-  moviesFetch: value => dispatch(actionMoviesFetch(value))
+  moviesFetch: value => dispatch(actionMoviesFetchByQueryString(value))
 });
 
 export default withRouter(

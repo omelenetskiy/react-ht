@@ -23,7 +23,7 @@ const App = () => (
       <ErrorBoundary>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/search/:query" component={Home} />
+          <Route exact path="/search" component={Home} />
           <Route path="/movie/:id" component={MoviePage} />
           <Route path="/*" component={NotFound} />
         </Switch>
