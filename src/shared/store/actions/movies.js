@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const ACTION_TYPE_MOVIES_FETCH = 'ACTION_TYPE_MOVIES_FETCH';
-export const ACTION_TYPE_MOVIES_FETCHING = 'ACTION_TYPE_MOVIES_FETCHING';
-export const ACTION_TYPE_SEARCH_CHANGE = 'ACTION_TYPE_SEARCH_CHANGE';
-export const ACTION_TYPE_SORT_CHANGE = 'ACTION_TYPE_SORT_CHANGE';
+export const ACTION_TYPE_MOVIES_FETCH = "ACTION_TYPE_MOVIES_FETCH";
+export const ACTION_TYPE_MOVIES_FETCHING = "ACTION_TYPE_MOVIES_FETCHING";
+export const ACTION_TYPE_SEARCH_CHANGE = "ACTION_TYPE_SEARCH_CHANGE";
+export const ACTION_TYPE_SORT_CHANGE = "ACTION_TYPE_SORT_CHANGE";
 
 const query = (sortBy, searchBy, value) =>
   `http://react-cdp-api.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=desc&search=${value}&searchBy=${searchBy}&limit=50`;
@@ -68,7 +68,7 @@ export function actionMoviesFetchByQueryString(query) {
   return async (dispatch, getState) => {
     try {
       const response = await axios.get(
-        `https://reactjs-cdp.herokuapp.com/movies?${query}`
+        `https://reactjs-cdp.herokuapp.com/movies?sortOrder=desc&${query}`
       );
       if (response.status === 200) {
         dispatch({

@@ -1,14 +1,23 @@
-import React from 'react';
-import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
-import { appTitle } from '../../../../config/moviesApp';
-import StyledHeader from '../../styled/header';
+import { appTitle } from "../../../../config/moviesApp";
+import StyledHeader from "../../styled/header";
+
+const StyledLink = styled(Link)`
+  color: ${props => props.theme.stylishColorLight};
+  text-decoration: none;
+  border: 2px solid ${props => props.theme.stylishColorLight};
+  padding: 5px;
+  border-radius: 3px;
+`;
 
 const Header = ({ location }) => (
   <StyledHeader>
     <Link to="/">{appTitle}</Link>
-    {location.pathname !== '/' && <Link to="/">Search</Link>}
+    {location.pathname !== "/" && <StyledLink to="/">Search</StyledLink>}
   </StyledHeader>
 );
 

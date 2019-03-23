@@ -1,18 +1,18 @@
-import Home from '../shared/components/layout/home/Home';
-import MoviePreview from '../shared/components/layout/moviePreview/MoviePreview';
+import Home from "../shared/components/layout/home/Home";
+import MoviePreview from "../shared/components/common/moviePreview/MoviePreview";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: Home,
     exact: true
   },
   {
-    path: '/search',
+    path: "/search",
     component: Home
   },
   {
-    path: '/movie/:id',
+    path: "/movie/:id",
     component: MoviePreview
   }
 ];

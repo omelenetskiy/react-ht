@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import bg from '../../../../static/images/collage.jpg';
+import { createGlobalStyle } from "styled-components";
+import bg from "../../../../static/images/collage.jpg";
 
 export const GlobalStyle = createGlobalStyle`
   @import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
@@ -30,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
     max-width: ${props => props.theme.maxPageWidth};
     margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
   }
@@ -37,12 +38,5 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: ${props => props.theme.dangerColor};
     text-decoration: none;
-  
-    &:active,
-    &:link,
-    &:visited,
-    &:hover {
-      color: ${props => props.theme.dangerColor};
-    }
   }
 `;

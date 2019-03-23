@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { actionMoviesFetchByQueryString } from '../../../store/actions/movies';
-import { getMoviesState } from '../../../store/selectors';
-import qs from 'query-string';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { actionMoviesFetchByQueryString } from "../../../store/actions/movies";
+import { getMoviesState } from "../../../store/selectors";
+import qs from "query-string";
 
-import { searchFormTitle } from '../../../../config/moviesApp';
+import { searchFormTitle } from "../../../../config/moviesApp";
 
-import Title from '../searchForm/title/Title';
-import Input from '../searchForm/input/Input';
-import SortFilter from '../sortFilter/SortFilter';
-import SearchFilter from '../searchFilter/SearchFilter';
+import Title from "../searchForm/title/Title";
+import Input from "../searchForm/input/Input";
+import SortFilter from "../sortFilter/SortFilter";
+import SearchFilter from "../searchFilter/SearchFilter";
 
 const StyledSearchForm = styled.form`
   margin-top: 40px;
@@ -19,20 +19,19 @@ const StyledSearchForm = styled.form`
 
 class SearchForm extends Component {
   state = {
-    inputValue: ''
+    inputValue: ""
   };
 
   handleSearch = e => {
     e.preventDefault();
-    const { history } = this.props;
+    const { history, moviesFetch } = this.props;
     const { inputValue } = this.state;
     const { searchBy } = this.props.movies;
     const searchQuery = { searchBy, search: inputValue };
     const searchString = qs.stringify(searchQuery);
-    this.props.moviesFetch(searchString);
-    console.log(searchString);
+    moviesFetch(searchString);
     history.push({
-      pathname: '/search',
+      pathname: "/search/",
       search: searchString
     });
   };
@@ -45,12 +44,13 @@ class SearchForm extends Component {
   };
 
   render() {
+    const { movies } = this.props.movies;
     return (
       <StyledSearchForm>
         <Title>{searchFormTitle}</Title>
         <Input placeholder="Find your movie..." onChange={this.handleChange} />
         <SearchFilter handleSearch={this.handleSearch} />
-        <SortFilter />
+        {movies && movies.length && <SortFilter />}
       </StyledSearchForm>
     );
   }

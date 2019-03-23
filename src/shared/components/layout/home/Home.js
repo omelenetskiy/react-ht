@@ -1,21 +1,20 @@
-import React, { Component, Fragment } from 'react';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import React, { PureComponent, Fragment } from "react";
+import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import {
   actionMoviesFetch,
   actionMoviesFetchIfNeeded,
   actionMoviesFetchByQueryString
-} from '../../../store/actions/movies';
-import { getMoviesState } from '../../../store/selectors';
-import qs from 'query-string';
+} from "../../../store/actions/movies";
+import { getMoviesState } from "../../../store/selectors";
+import qs from "query-string";
 
-import SearchForm from '../../common/searchForm/SearchForm';
-import MovieList from '../movieList/MovieList';
+import SearchForm from "../../common/searchForm/SearchForm";
+import MovieList from "../../common/movieList/MovieList";
 
-class Home extends Component {
+class Home extends PureComponent {
   static fetchData({ store, params }) {
-    console.log('params', params);
     if (params.query) {
       const parsed = qs.parse(params.query);
       const stringified = qs.stringify(parsed);
@@ -25,7 +24,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(actionMoviesFetchIfNeeded());
+    // this.props.dispatch(actionMoviesFetchIfNeeded());
   }
 
   render() {

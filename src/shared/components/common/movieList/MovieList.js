@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import MovieCard from '../movieCard/MovieCard';
+import MovieCard from "../movieCard/MovieCard";
 
 const StyledMovieCardWrapper = styled.div`
   display: flex;
   padding: 15px 0;
   flex-flow: row wrap;
   justify-content: center;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
 `;
 
 const MovieList = ({ movies }) => (

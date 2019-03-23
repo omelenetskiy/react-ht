@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
+import React, { Fragment } from "react";
+import styled from "styled-components";
 
-import Button from '../../styled/button';
-import Checkbox from './checkbox/Checkbox';
+import Button from "../../styled/button";
+import Checkbox from "./checkbox/Checkbox";
 
-import StyledButtonGroup from '../../styled/buttonGroup';
-import StyledFilterTitle from '../../styled/filterTitle';
+import StyledButtonGroup from "../../styled/buttonGroup";
+import StyledFilterTitle from "../../styled/filterTitle";
 
 const StyledLabel = styled(Button)`
   min-width: 50px;
@@ -14,8 +14,8 @@ const StyledLabel = styled(Button)`
   transition: all 0.1s ease-in-out;
 `;
 
-const ButtonGroup = ({ controls, toggleSearchBy, color }) => (
-  <StyledButtonGroup>
+const ButtonGroup = ({ controls, toggleSearchBy, color, type }) => (
+  <StyledButtonGroup type={type}>
     <StyledFilterTitle color={color}>{controls.title}</StyledFilterTitle>
 
     <div className="filter-buttons">

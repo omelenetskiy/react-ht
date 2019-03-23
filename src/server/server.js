@@ -1,27 +1,27 @@
-import path from 'path';
-import fs from 'fs';
-import { Server } from 'http';
-import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { matchPath } from 'react-router';
-import { StaticRouter } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import path from "path";
+import fs from "fs";
+import { Server } from "http";
+import express from "express";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { matchPath } from "react-router";
+import { StaticRouter } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 // App Imports
-import { rootReducer } from '../shared/store/store';
+import { rootReducer } from "../shared/store/store";
 
-import routes from '../shared/routes';
-import App from '../shared/components/App';
-import index from './views/index';
+import routes from "../shared/routes";
+import App from "../shared/components/App";
+import index from "./views/index";
 
-import config from '../../webpack.config';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import config from "../../webpack.config";
+import webpack from "webpack";
+import webpackDevMiddleware from "webpack-dev-middleware";
+import webpackHotMiddleware from "webpack-hot-middleware";
 
 const compiler = webpack(config);
 // Create new server
@@ -37,13 +37,13 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 
 // Static files folder
-app.use(express.static(path.join(__dirname, '../../static')));
+app.use(express.static(path.join(__dirname, "../../static")));
 
 // Store (new store for each request)
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // Match any Route
-app.get('*', (request, response) => {
+app.get("*", (request, response) => {
   let status = 200;
   const sheet = new ServerStyleSheet();
 
@@ -95,11 +95,11 @@ app.get('*', (request, response) => {
         const styleTags = sheet.getStyleTags();
 
         let html = index(helmet, appHtml, initialState, styleTags);
-        fs.writeFileSync('static/index.html', html);
+        fs.writeFileSync("static/index.html", html);
 
         // Reset the state on server
         store.dispatch({
-          type: 'RESET'
+          type: "RESET"
         });
 
         // Finally send generated HTML with initial data to the client
@@ -114,7 +114,7 @@ app.get('*', (request, response) => {
 
 // Start Server
 const port = process.env.PORT || 5000;
-const env = process.env.MODE || 'development';
+const env = process.env.MODE || "development";
 server.listen(port, error => {
   if (error) {
     return console.error(error);
