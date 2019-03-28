@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card styled should render correctly 1`] = `
+.c0 {
+  position: absolute;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.c0:checked + label {
+  background-color: dangerColorDark;
+}
+
+.c0 + label {
+  background-color: stylishColor;
+}
+
+<input
+  className="c0"
+/>
+`;

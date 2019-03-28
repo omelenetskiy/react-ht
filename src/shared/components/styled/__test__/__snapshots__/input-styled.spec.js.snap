@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input styled should render correctly 1`] = `
+.c0 {
+  width: 100%;
+  padding: 15px 0px;
+  text-indent: 15px;
+  background-color: black;
+  border: none;
+  border-bottom: 5px solid dangerColor;
+  margin: 10px 0px;
+  color: #fff;
+}
+
+.c0:focus {
+  outline: 2px solid dangerColor;
+}
+
+<input
+  className="c0"
+/>
+`;

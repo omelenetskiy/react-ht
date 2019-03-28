@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client should render correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "dispatch": [MockFunction],
+        "getState": [MockFunction] {
+          "calls": Array [
+            Array [],
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+        "subscribe": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+      },
+      "storeState": undefined,
+    }
+  }
+>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+</ContextProvider>
+`;

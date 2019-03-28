@@ -15,4 +15,7 @@ const Client = () => (
   </Provider>
 );
 
-hydrate(<Client />, document.getElementById('root'));
+export default hydrate(
+  <Client />,
+  document.getElementById('root') || document.createElement('div')
+);

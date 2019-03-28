@@ -1,15 +1,15 @@
-import React, { lazy, Suspense, Component, Fragment } from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import {
   actionMovieFetch,
   actionMovieFetchIfNeeded
-} from "../../../store/actions/movie";
-import { getMovieState, getMoviesState } from "../../../store/selectors";
+} from '../../../store/actions/movie';
+import { getMovieState, getMoviesState } from '../../../store/selectors';
 
-import MovieList from "../movieList/MovieList";
-const MovieCard = lazy(() => import("./movieCard/MovieCard"));
+import MovieList from '../movieList/MovieList';
+import MovieCard from './movieCard/MovieCard';
 
 class MoviePreview extends Component {
   static fetchData({ store, params }) {
@@ -44,9 +44,7 @@ class MoviePreview extends Component {
           <title>{`${movie.title}`}</title>
         </Helmet>
 
-        <Suspense fallback={<div>Loading...</div>}>
-          <MovieCard movie={movie} parsedDate={parsedDate} />
-        </Suspense>
+        <MovieCard movie={movie} parsedDate={parsedDate} />
 
         <section className="home">
           <MovieList movies={movies} />

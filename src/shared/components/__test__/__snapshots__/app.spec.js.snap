@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "cardMaxWidth": "200px",
+      "dangerColor": "#ff4444",
+      "dangerColorDark": "#cc0000",
+      "infoColor": "#33b5e5",
+      "infoColorDark": "#0099cc",
+      "maxPageWidth": "1024px",
+      "minPageWidth": "360px",
+      "stylishColor": "#4b515d",
+      "stylishColorDark": "#3e4551",
+      "stylishColorLight": "#d2d5da",
+      "successColor": "#00c851",
+      "successColorDark": " #007e33",
+      "warningColor": "#ffbb33",
+      "warningColorDark": "#ff8800",
+    }
+  }
+>
+  <GlobalStyleComponent />
+  <withRouter(Header) />
+  <ErrorBoundary>
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/search"
+      />
+      <Route
+        component={[Function]}
+        path="/movie/:id"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </ErrorBoundary>
+  <Footer />
+</ThemeProvider>
+`;

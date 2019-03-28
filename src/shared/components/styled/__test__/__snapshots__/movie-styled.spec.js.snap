@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie styled should render correctly 1`] = `
+.c0 {
+  color: #fff;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 20px 0;
+}
+
+.c0 .card-img {
+  width: 250px;
+  height: 100%;
+  margin-right: 30px;
+}
+
+.c0 .card-body {
+  color: stylishColorLight;
+}
+
+.c0 .card-title {
+  color: dangerColor;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.c0 .card-title h1 {
+  font-size: 2em;
+}
+
+.c0 .card-title span {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border: 1px solid stylishColorLight;
+  color: stylishColorLight;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  margin: 0 20px;
+}
+
+.c0 .card-time b:first-child {
+  margin-right: 30px;
+}
+
+.c0 .card-text {
+  line-height: 1.35em;
+}
+
+<article
+  className="c0"
+  color="light"
+/>
+`;

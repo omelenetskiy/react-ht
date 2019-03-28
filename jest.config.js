@@ -6,13 +6,27 @@ module.exports = {
   clearMocks: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx,mjs}',
+    '!src/server/views/*',
+    '!src/shared/constants/*',
+    '!src/shared/routes.js',
+    '!src/client/index.js',
+    '!src/server/server.js',
+    '!src/shared/components/styled/globalStyle.js'
+  ],
+
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$':
+      '<rootDir>/src/shared/components/styled/globalStyle.js',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+  },
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
 
   // An array of file extensions your modules use
-  moduleFileExtensions: ['js', 'json', 'jsx'],
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
   setupFiles: ['<rootDir>/enzyme.config.js'],
@@ -33,5 +47,13 @@ module.exports = {
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
 
   // Indicates whether each individual test should be reported during the run
-  verbose: false
+  verbose: false,
+
+  transform: {
+    '^.+\\.js$': 'babel-jest',
+    '.+\\.(css|styl|less|sass|scss)$': 'jest-transform-css'
+  },
+
+  snapshotSerializers: ['enzyme-to-json/serializer'],
+  setupFilesAfterEnv: ['./node_modules/jest-enzyme/lib/index.js']
 };

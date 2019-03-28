@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroup should render correctly 1`] = `
+<buttonGroup___default
+  type="type"
+>
+  <filterTitle___default
+    color="white"
+  />
+  <div
+    className="filter-buttons"
+  >
+    <Checkbox
+      button={
+        Object {
+          "title": "title",
+        }
+      }
+      toggleSearchBy={[MockFunction]}
+    />
+    <ButtonGroup__StyledLabel
+      as="label"
+      htmlFor="title"
+    >
+      title
+    </ButtonGroup__StyledLabel>
+    <Checkbox
+      button={
+        Object {
+          "title": "title",
+        }
+      }
+      toggleSearchBy={[MockFunction]}
+    />
+    <ButtonGroup__StyledLabel
+      as="label"
+      htmlFor="title"
+    >
+      title
+    </ButtonGroup__StyledLabel>
+  </div>
+</buttonGroup___default>
+`;

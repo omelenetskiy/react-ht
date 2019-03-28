@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render correctly 1`] = `
+<checkbox___default
+  defaultChecked={true}
+  id="title"
+  name="name"
+  onChange={[MockFunction]}
+  type="radio"
+  value="value"
+/>
+`;

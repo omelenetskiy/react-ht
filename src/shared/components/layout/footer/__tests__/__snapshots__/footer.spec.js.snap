@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<footer___default>
+  <Link
+    replace={false}
+    to="/"
+  >
+    Netflixroulette
+  </Link>
+</footer___default>
+`;

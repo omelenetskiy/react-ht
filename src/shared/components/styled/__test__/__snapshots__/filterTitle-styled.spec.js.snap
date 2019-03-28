@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title styled should render correctly 1`] = `
+.c0 {
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+<span
+  className="c0"
+  color="light"
+/>
+`;

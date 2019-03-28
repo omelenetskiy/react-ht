@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import { appTitle } from "../../../../config/moviesApp";
-import StyledHeader from "../../styled/header";
+import { appTitle } from '../../../../config/moviesApp';
+import StyledHeader from '../../styled/header';
 
 const StyledLink = styled(Link)`
   color: ${props => props.theme.stylishColorLight};
@@ -14,10 +14,10 @@ const StyledLink = styled(Link)`
   border-radius: 3px;
 `;
 
-const Header = ({ location }) => (
+export const Header = ({ location }) => (
   <StyledHeader>
     <Link to="/">{appTitle}</Link>
-    {location.pathname !== "/" && <StyledLink to="/">Search</StyledLink>}
+    {location.pathname !== '/' && <StyledLink to="/">Search</StyledLink>}
   </StyledHeader>
 );
 
