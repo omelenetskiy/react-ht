@@ -14,7 +14,13 @@ const StyledLink = styled(Link)`
   border-radius: 3px;
 `;
 
-export const Header = ({ location }) => (
+type Props = {
+  location: {
+    pathname: string
+  }
+};
+
+export const Header = ({ location }: Props) => (
   <StyledHeader>
     <Link to="/">{appTitle}</Link>
     {location.pathname !== '/' && <StyledLink to="/">Search</StyledLink>}

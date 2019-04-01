@@ -1,8 +1,18 @@
-import React from 'react';
+import * as React from 'react';
 
 import StyledCheckbox from '../../../styled/checkbox';
 
-const Checkbox = ({ button, toggleSearchBy }) => (
+type Props = {
+  button: {
+    value: string,
+    title: string,
+    name: string,
+    checked: boolean
+  },
+  toggleSearchBy: SyntheticEvent<>
+};
+
+const Checkbox = ({ button, toggleSearchBy }: Props) => (
   <StyledCheckbox
     type="radio"
     value={button.value}

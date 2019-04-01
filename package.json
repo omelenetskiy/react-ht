@@ -8,7 +8,8 @@
     "dev": "babel-node src/server/server.js",
     "storybook": "start-storybook",
     "test": "jest --coverage --colors",
-    "test:watch": "jest --coverage --watch --colors"
+    "test:watch": "jest --coverage --watch --colors",
+    "flow": "flow"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "@babel/plugin-transform-strict-mode": "^7.2.0",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.4.1",
+    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@storybook/addon-actions": "^5.0.3",
@@ -36,6 +38,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5",
+    "flow-bin": "^0.95.1",
     "identity-obj-proxy": "^3.0.0",
     "isomorphic-style-loader": "^5.0.1",
     "jest": "^24.5.0",

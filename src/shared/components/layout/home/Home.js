@@ -1,17 +1,17 @@
-import React, { PureComponent, Fragment } from "react";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import React, { PureComponent, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import {
   actionMoviesFetch,
   actionMoviesFetchIfNeeded,
   actionMoviesFetchByQueryString
-} from "../../../store/actions/movies";
-import { getMoviesState } from "../../../store/selectors";
-import qs from "query-string";
+} from '../../../store/actions/movies';
+import { getMoviesState } from '../../../store/selectors';
+import qs from 'query-string';
 
-import SearchForm from "../../common/searchForm/SearchForm";
-import MovieList from "../../common/movieList/MovieList";
+import SearchForm from '../../common/searchForm/SearchForm';
+import MovieList from '../../common/movieList/MovieList';
 
 class Home extends PureComponent {
   static fetchData({ store, params }) {

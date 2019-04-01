@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import MovieCard from "../movieCard/MovieCard";
+import MovieCard from '../movieCard/MovieCard';
 
 const StyledMovieCardWrapper = styled.div`
   display: flex;
@@ -11,7 +11,14 @@ const StyledMovieCardWrapper = styled.div`
   background: rgba(255, 255, 255, 0.7);
 `;
 
-const MovieList = ({ movies }) => (
+type Props = {
+  movies: Array<{
+    release_date: string,
+    id: string
+  }>
+};
+
+const MovieList = ({ movies }: Props) => (
   <StyledMovieCardWrapper>
     {movies && movies.length ? (
       movies.map(movie => {

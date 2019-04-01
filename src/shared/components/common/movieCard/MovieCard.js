@@ -12,7 +12,19 @@ const StyledLink = styled(Link)`
   max-width: ${props => props.theme.cardMaxWidth};
 `;
 
-const MovieCard = ({ movie, parsedDate }) => (
+type Props = {
+  parsedDate: string,
+  movie: {
+    id: string,
+    poster_path: string,
+    title: string,
+    genres: Array<{
+      [key]: string
+    }>
+  }
+};
+
+const MovieCard = ({ movie, parsedDate }: Props) => (
   <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
     <StyledMovieCard>
       <img src={movie.poster_path} className="card-img" alt={movie.title} />
