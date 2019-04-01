@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import StyledMovie from "../../../styled/moviePreview";
+import StyledMovie from '../../../styled/moviePreview';
 
 const MovieCard = ({ movie, parsedDate }) => {
   return movie ? (
@@ -9,14 +9,14 @@ const MovieCard = ({ movie, parsedDate }) => {
       <div className="card-body">
         <div className="card-title">
           <h1>{movie.title}</h1>
-          <span>{movie.vote_average}</span>
+          {movie.vote_average && <span>{movie.vote_average}</span>}
         </div>
         <div className="card-tagline">
-          <small>{movie.tagline}</small>
+          {movie.tagline && <small>{movie.tagline}</small>}
         </div>
         <p className="card-time">
           <b>{`${parsedDate}`}</b>
-          <b>{`${movie.runtime} min`}</b>
+          {movie.runtime && <b>{`${movie.runtime} min`}</b>}
         </p>
         <p className="card-text">{movie.overview}</p>
       </div>
