@@ -7,7 +7,7 @@ import ProviderWrapper from '../Provider';
 import { theme } from '../../src/shared/components/styled/theme';
 import { GlobalStyle } from '../../src/shared/components/styled/globalStyle';
 
-import SearchInput from '../../src/shared/components/common/search/SearchInput';
+import SearchInput from '../../src/shared/components/common/searchForm/input/Input';
 
 const themes = [theme];
 
@@ -18,6 +18,6 @@ storiesOf('Input', module)
   .add('search input', () => (
     <Fragment>
       <GlobalStyle />
-      <SearchInput />
+      <SearchInput placeholder="Type text..." onChange={() => ({})} />
     </Fragment>
   ));

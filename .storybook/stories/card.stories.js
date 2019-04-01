@@ -7,7 +7,7 @@ import ProviderWrapper from '../Provider';
 import { theme } from '../../src/shared/components/styled/theme';
 import { GlobalStyle } from '../../src/shared/components/styled/globalStyle';
 
-import Card from '../../src/shared/components/layout/movieCard/MovieCard';
+import Card from '../../src/shared/components/common/movieCard/MovieCard';
 
 const themes = [theme];
 

@@ -9,6 +9,7 @@ const StyledLink = styled(Link)`
   background-color: #fff;
   border-radius: 3px;
   margin: 5px;
+  max-width: ${props => props.theme.cardMaxWidth};
 `;
 
 const MovieCard = ({ movie, parsedDate }) => (
