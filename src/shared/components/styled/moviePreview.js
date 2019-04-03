@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default styled.article`
   color: #fff;
@@ -15,11 +15,11 @@ export default styled.article`
   }
 
   .card-body {
-    color: ${props => props.theme.stylishColorLight};
+    color: ${(props) => props.theme.stylishColorLight};
   }
 
   .card-title {
-    color: ${props => props.theme.dangerColor};
+    color: ${(props) => props.theme.dangerColor};
     display: inline-flex;
     align-items: center;
     line-height: 1;
@@ -32,8 +32,8 @@ export default styled.article`
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid ${props => props.theme.stylishColorLight};
-      color: ${props => props.theme.stylishColorLight};
+      border: 1px solid ${(props) => props.theme.stylishColorLight};
+      color: ${(props) => props.theme.stylishColorLight};
       border-radius: 50%;
       font-size: 20px;
       width: 45px;

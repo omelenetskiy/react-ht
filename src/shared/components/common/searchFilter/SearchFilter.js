@@ -9,10 +9,9 @@ import Button from '../button/Button';
 import ButtonGroup from '../buttonGroup/ButtonGroup';
 
 class SearchFilter extends Component {
-  toggleSearchBy = e => {
+  toggleSearchBy = (e) => {
     const { changeSearchBy } = this.props;
     changeSearchBy(e.target.value);
-    console.log(e.target.value);
   };
 
   render() {
@@ -32,8 +31,8 @@ class SearchFilter extends Component {
   }
 }
 
-const matDispatchToProps = dispatch => ({
-  changeSearchBy: value => dispatch(actionSearchByChange(value))
+const matDispatchToProps = (dispatch) => ({
+  changeSearchBy: (value) => dispatch(actionSearchByChange(value)),
 });
 
 export default connect(

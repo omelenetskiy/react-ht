@@ -6,13 +6,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
+import App from '../../shared/components/App';
+
 const store = {
   dispatch: jest.fn(),
   getState: jest.fn(),
-  subscribe: jest.fn()
+  subscribe: jest.fn(),
 };
-
-import App from '../../shared/components/App';
 
 describe('Client', () => {
   it('should render correctly', () => {

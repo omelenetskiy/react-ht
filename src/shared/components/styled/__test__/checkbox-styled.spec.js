@@ -7,7 +7,7 @@ import Checkbox from '../checkbox';
 
 const theme = {
   dangerColorDark: 'dangerColorDark',
-  stylishColor: 'stylishColor'
+  stylishColor: 'stylishColor',
 };
 
 describe('Card styled', () => {

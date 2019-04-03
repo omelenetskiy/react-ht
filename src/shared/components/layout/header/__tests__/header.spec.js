@@ -4,14 +4,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
-jest.mock('../../../../../config/moviesApp', () => ({
-  appTitle: 'appTitle'
-}));
-
 import { Header } from '../Header';
 
+jest.mock('../../../../../config/moviesApp', () => ({
+  appTitle: 'appTitle',
+}));
+
 const location = {
-  pathname: '/header'
+  pathname: '/header',
 };
 
 describe('Header', () => {

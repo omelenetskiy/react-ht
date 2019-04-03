@@ -5,30 +5,30 @@ import { Provider } from 'react-redux';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
-jest.mock('../../../../../config/moviesApp', () => ({
-  appTitle: 'appTitle'
-}));
-
 import { MoviePreview } from '../MoviePreview';
 
+jest.mock('../../../../../config/moviesApp', () => ({
+  appTitle: 'appTitle',
+}));
+
 const location = {
-  pathname: '/movie'
+  pathname: '/movie',
 };
 
 const props = {
   moviesData: {
     movie: {
       title: 'title',
-      release_date: 'release_date'
+      release_date: 'release_date',
     },
-    movies: []
-  }
+    movies: [],
+  },
 };
 
 const store = {
   dispatch: jest.fn(),
   getState: jest.fn(),
-  subscribe: jest.fn()
+  subscribe: jest.fn(),
 };
 
 describe('MoviePreview', () => {

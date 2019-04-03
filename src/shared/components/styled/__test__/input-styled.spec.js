@@ -6,7 +6,7 @@ import 'jest-styled-components';
 import Input from '../input';
 
 const theme = {
-  dangerColor: 'dangerColor'
+  dangerColor: 'dangerColor',
 };
 
 describe('Input styled', () => {

@@ -4,8 +4,8 @@ export default styled.button`
   border: 0;
   padding: 7px 15px;
   color: #fff;
-  width: ${props => props.size === 'large' && '150px'};
-  background-color: ${props => props.theme.dangerColor};
+  width: ${(props) => props.size === 'large' && '150px'};
+  background-color: ${(props) => props.theme.dangerColor};
   font-weight: bold;
   border-radius: 3px;
   cursor: pointer;
@@ -16,6 +16,6 @@ export default styled.button`
   font-size: 14px;
 
   &:hover {
-    background-color: ${props => props.theme.dangerColorDark};
+    background-color: ${(props) => props.theme.dangerColorDark};
   }
 `;

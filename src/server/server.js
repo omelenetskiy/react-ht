@@ -1,124 +1,97 @@
-import path from "path";
-import fs from "fs";
-import { Server } from "http";
-import express from "express";
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { matchPath } from "react-router";
-import { StaticRouter } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import { ServerStyleSheet, StyleSheetManager } from "styled-components";
-// App Imports
-import { rootReducer } from "../shared/store/store";
+import path from 'path';
+import Express from 'express';
+import React from 'react';
+import thunk from 'redux-thunk';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import Loadable from 'react-loadable';
+import { getBundles } from 'react-loadable/webpack';
+import { Server } from 'http';
+import { renderToString } from 'react-dom/server';
+import { matchPath } from 'react-router';
+import { StaticRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import stats from '../../static/js/react-loadable.json';
+import rootReducer from '../shared/store/reducers';
 
-import routes from "../shared/routes";
-import App from "../shared/components/App";
-import index from "./views/index";
+import routes from '../shared/constants/routes';
+import App from '../shared/components/App';
+import indexHTML from './views';
 
-import config from "../../webpack.config";
-import webpack from "webpack";
-import webpackDevMiddleware from "webpack-dev-middleware";
-import webpackHotMiddleware from "webpack-hot-middleware";
+import config from '../../webpack.dev';
 
 const compiler = webpack(config);
-// Create new server
-const app = new express();
+const app = new Express();
 const server = new Server(app);
 
-app.use(
-  webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-  })
-);
-app.use(webpackHotMiddleware(compiler));
+if (process.env.NODE_ENV !== 'production') {
+  app.use(
+    webpackDevMiddleware(compiler, {
+      noInfo: true,
+      publicPath: config.output.publicPath,
+    })
+  );
+  app.use(webpackHotMiddleware(compiler));
+  app.use(Express.static(path.join(__dirname, '../../static')));
+}
 
-// Static files folder
-app.use(express.static(path.join(__dirname, "../../static")));
-
-// Store (new store for each request)
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-// Match any Route
-app.get("*", (request, response) => {
-  let status = 200;
+app.get('*', (request, response) => {
+  const store = createStore(rootReducer, applyMiddleware(thunk));
   const sheet = new ServerStyleSheet();
+  const modules = [];
 
-  const matches = routes.reduce((matches, route) => {
+  const promises = routes.reduce((matches, route) => {
     const match = matchPath(request.url, route.path, route);
     if (match && match.isExact) {
-      matches.push({
-        route,
-        match,
-        promise: route.component.fetchData
+      matches.push(
+        route.component.fetchData
           ? route.component.fetchData({ store, params: match.params })
           : Promise.resolve(null)
-      });
+      );
     }
     return matches;
   }, []);
 
-  // No such route, send 404 status
-  if (matches.length === 0) {
-    status = 404;
-  }
+  Promise.all(promises);
 
-  // Any AJAX calls inside components
-  const promises = matches.map(match => {
-    return match.promise;
-  });
+  const initialState = store.getState();
+  const context = {};
 
-  // Resolve the AJAX calls and render
-  Promise.all(promises).then(
-    (...data) => {
-      const initialState = store.getState();
-      const context = {};
-
-      const appHtml = renderToString(
-        <Provider store={store} key="provider">
-          <StaticRouter context={context} location={request.url}>
-            <StyleSheetManager sheet={sheet.instance}>
-              <App />
-            </StyleSheetManager>
-          </StaticRouter>
-        </Provider>
-      );
-
-      if (context.url) {
-        response.redirect(context.url);
-      } else {
-        // Get Meta header tags
-        const helmet = Helmet.renderStatic();
-        const styleTags = sheet.getStyleTags();
-
-        let html = index(helmet, appHtml, initialState, styleTags);
-        fs.writeFileSync("static/index.html", html);
-
-        // Reset the state on server
-        store.dispatch({
-          type: "RESET"
-        });
-
-        // Finally send generated HTML with initial data to the client
-        return response.status(status).send(html);
-      }
-    },
-    error => {
-      console.error(response, error);
-    }
+  const appHtml = renderToString(
+    <Loadable.Capture report={(moduleName) => modules.push(moduleName)}>
+      <Provider store={store}>
+        <StaticRouter context={context} location={request.url}>
+          <StyleSheetManager sheet={sheet.instance}>
+            <App />
+          </StyleSheetManager>
+        </StaticRouter>
+      </Provider>
+    </Loadable.Capture>
   );
+
+  const bundles = getBundles(stats, modules);
+  const helmet = Helmet.renderStatic();
+  const styleTags = sheet.getStyleTags();
+
+  const html = indexHTML(helmet, appHtml, initialState, styleTags, bundles);
+
+  return response.send(html);
 });
 
-// Start Server
 const port = process.env.PORT || 5000;
-const env = process.env.MODE || "development";
-server.listen(port, error => {
-  if (error) {
-    return console.error(error);
-  } else {
-    return console.info(`Server running on http://localhost:${port} [${env}]`);
-  }
+const env = process.env.NODE_ENV || 'development';
+
+Loadable.preloadAll().then(() => {
+  server.listen(port, (error) => {
+    if (error) {
+      return console.error(error);
+    }
+    return console.info(
+      `Server is running on http://localhost:${port} [${env}]`
+    );
+  });
 });

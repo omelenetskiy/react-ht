@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default styled.div`
-  max-width: ${props => props.theme.cardMaxWidth};
+  max-width: ${(props) => props.theme.cardMaxWidth};
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  color: ${props => props.theme.stylishColor};
+  color: ${(props) => props.theme.stylishColor};
 
   .card-img {
     width: 100%;
@@ -30,7 +30,7 @@ export default styled.div`
 
     .badge {
       font-size: 12px;
-      border: 1px solid ${props => props.theme.stylishColorLight};
+      border: 1px solid ${(props) => props.theme.stylishColorLight};
       border-radius: 2px;
       padding: 2px;
     }

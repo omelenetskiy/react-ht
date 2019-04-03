@@ -1,31 +1,31 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const ACTION_TYPE_MOVIES_FETCH = "ACTION_TYPE_MOVIES_FETCH";
-export const ACTION_TYPE_MOVIES_FETCHING = "ACTION_TYPE_MOVIES_FETCHING";
-export const ACTION_TYPE_SEARCH_CHANGE = "ACTION_TYPE_SEARCH_CHANGE";
-export const ACTION_TYPE_SORT_CHANGE = "ACTION_TYPE_SORT_CHANGE";
+export const ACTION_TYPE_MOVIES_FETCH = 'ACTION_TYPE_MOVIES_FETCH';
+export const ACTION_TYPE_MOVIES_FETCHING = 'ACTION_TYPE_MOVIES_FETCHING';
+export const ACTION_TYPE_SEARCH_CHANGE = 'ACTION_TYPE_SEARCH_CHANGE';
+export const ACTION_TYPE_SORT_CHANGE = 'ACTION_TYPE_SORT_CHANGE';
 
 const query = (sortBy, searchBy, value) =>
   `http://react-cdp-api.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=desc&search=${value}&searchBy=${searchBy}&limit=50`;
 
-export const actionSearchByChange = searchBy => ({
+export const actionSearchByChange = (searchBy) => ({
   type: ACTION_TYPE_SEARCH_CHANGE,
-  searchBy
+  searchBy,
 });
 
-export const actionSortByChange = sortBy => ({
+export const actionSortByChange = (sortBy) => ({
   type: ACTION_TYPE_SORT_CHANGE,
-  sortBy
+  sortBy,
 });
 
 export function actionMoviesFetch(value) {
   return async (dispatch, getState) => {
     dispatch({
-      type: ACTION_TYPE_MOVIES_FETCHING
+      type: ACTION_TYPE_MOVIES_FETCHING,
     });
 
     const {
-      movies: { searchBy, sortBy }
+      movies: { searchBy, sortBy },
     } = getState();
 
     try {
@@ -33,7 +33,7 @@ export function actionMoviesFetch(value) {
       if (response.status === 200) {
         dispatch({
           type: ACTION_TYPE_MOVIES_FETCH,
-          movies: response.data.data
+          movies: response.data.data,
         });
       } else {
         console.error(response);
@@ -53,7 +53,7 @@ export function actionMoviesMatchByGenre(genres) {
       if (response.status === 200) {
         dispatch({
           type: ACTION_TYPE_MOVIES_FETCH,
-          movies: response.data.data
+          movies: response.data.data,
         });
       } else {
         console.error(response);
@@ -64,16 +64,16 @@ export function actionMoviesMatchByGenre(genres) {
   };
 }
 
-export function actionMoviesFetchByQueryString(query) {
+export function actionMoviesFetchByQueryString(queryString) {
   return async (dispatch, getState) => {
     try {
       const response = await axios.get(
-        `https://reactjs-cdp.herokuapp.com/movies?sortOrder=desc&${query}`
+        `https://reactjs-cdp.herokuapp.com/movies?sortOrder=desc&${queryString}`
       );
       if (response.status === 200) {
         dispatch({
           type: ACTION_TYPE_MOVIES_FETCH,
-          movies: response.data.data
+          movies: response.data.data,
         });
       } else {
         console.error(response);
@@ -84,11 +84,10 @@ export function actionMoviesFetchByQueryString(query) {
   };
 }
 
-export const actionMoviesFetchIfNeeded = () => {
-  return (dispatch, getState) => {
-    const state = getState();
-    if (state.movies.length === 0) {
-      return dispatch(actionMoviesFetch());
-    }
-  };
+export const actionMoviesFetchIfNeeded = () => (dispatch, getState) => {
+  const state = getState();
+  if (state.movies.length === 0) {
+    return dispatch(actionMoviesFetch());
+  }
+  return false;
 };

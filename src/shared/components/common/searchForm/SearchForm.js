@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { actionMoviesFetchByQueryString } from "../../../store/actions/movies";
-import { getMoviesState } from "../../../store/selectors";
-import qs from "query-string";
+import React, { Component } from 'react';
+import qs from 'query-string';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { actionMoviesFetchByQueryString } from '../../../store/actions/movies';
+import { getMoviesState } from '../../../store/selectors';
+import { searchFormTitle } from '../../../../config/moviesApp';
 
-import { searchFormTitle } from "../../../../config/moviesApp";
-
-import Title from "../searchForm/title/Title";
-import Input from "../searchForm/input/Input";
-import SortFilter from "../sortFilter/SortFilter";
-import SearchFilter from "../searchFilter/SearchFilter";
+import SortFilter from '../sortFilter/SortFilter';
+import SearchFilter from '../searchFilter/SearchFilter';
+import Title from './title/Title';
+import Input from './input/Input';
 
 const StyledSearchForm = styled.form`
   margin-top: 40px;
@@ -19,51 +18,50 @@ const StyledSearchForm = styled.form`
 
 class SearchForm extends Component {
   state = {
-    inputValue: ""
+    inputValue: '',
   };
 
-  handleSearch = e => {
+  handleSearch = (e) => {
     e.preventDefault();
-    const { history, moviesFetch } = this.props;
+    const { history, moviesFetch, movies } = this.props;
     const { inputValue } = this.state;
-    const { searchBy } = this.props.movies;
+    const { searchBy } = movies;
     const searchQuery = { searchBy, search: inputValue };
     const searchString = qs.stringify(searchQuery);
     moviesFetch(searchString);
     history.push({
-      pathname: "/search/",
-      search: searchString
+      pathname: '/search/',
+      search: searchString,
     });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { value } = e.target;
     this.setState({
-      inputValue: value
+      inputValue: value,
     });
   };
 
   render() {
-    const { movies } = this.props.movies;
+    const { movies } = this.props;
+    const { movies: moviesList } = movies;
     return (
       <StyledSearchForm>
         <Title>{searchFormTitle}</Title>
         <Input placeholder="Find your movie..." onChange={this.handleChange} />
         <SearchFilter handleSearch={this.handleSearch} />
-        {movies && movies.length && <SortFilter />}
+        {moviesList && moviesList.length && <SortFilter />}
       </StyledSearchForm>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    movies: getMoviesState(state)
-  };
-};
+const mapStateToProps = (state) => ({
+  movies: getMoviesState(state),
+});
 
-const matDispatchToProps = dispatch => ({
-  moviesFetch: value => dispatch(actionMoviesFetchByQueryString(value))
+const matDispatchToProps = (dispatch) => ({
+  moviesFetch: (value) => dispatch(actionMoviesFetchByQueryString(value)),
 });
 
 export default withRouter(

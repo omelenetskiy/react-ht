@@ -6,11 +6,11 @@ import 'jest-styled-components';
 import Title from '../filterTitle';
 
 const theme = {
-  stylishColor: 'stylishColor'
+  stylishColor: 'stylishColor',
 };
 
 const props = {
-  color: 'light'
+  color: 'light',
 };
 
 describe('Title styled', () => {

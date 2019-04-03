@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const StyledNotFound = styled.div`
-  color: ${props => props.theme.dangerColor};
+  color: ${(props) => props.theme.dangerColor};
   p {
     font-size: 45px;
   }

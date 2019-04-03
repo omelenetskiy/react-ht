@@ -10,16 +10,16 @@ const props = {
   controls: {
     buttons: [
       {
-        title: 'title'
+        title: 'title',
       },
       {
-        title: 'title'
-      }
-    ]
+        title: 'title',
+      },
+    ],
   },
   toggleSearchBy: jest.fn(),
   color: 'white',
-  type: 'type'
+  type: 'type',
 };
 
 describe('ButtonGroup', () => {

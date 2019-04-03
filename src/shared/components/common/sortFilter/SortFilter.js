@@ -1,17 +1,17 @@
-import React, { PureComponent, Fragment } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
-import { getMoviesState } from "../../../store/selectors";
+import React, { PureComponent, Fragment } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import qs from 'query-string';
+import { getMoviesState } from '../../../store/selectors';
 import {
   actionSortByChange,
-  actionMoviesFetchByQueryString
-} from "../../../store/actions/movies";
-import qs from "query-string";
+  actionMoviesFetchByQueryString,
+} from '../../../store/actions/movies';
 
-import { sortByButtons } from "../../../../config/buttonGroups";
+import { sortByButtons } from '../../../../config/buttonGroups';
 
-import ButtonGroup from "../buttonGroup/ButtonGroup";
+import ButtonGroup from '../buttonGroup/ButtonGroup';
 
 const StyledFilter = styled.section`
   width: 100%;
@@ -25,7 +25,7 @@ const StyledFilter = styled.section`
 `;
 
 class Filter extends PureComponent {
-  toggleSortBy = e => {
+  toggleSortBy = (e) => {
     const { location, changeSortBy, moviesFetch, movies } = this.props;
     changeSortBy(e.target.value);
     const parsed = qs.parse(location.search);
@@ -36,7 +36,7 @@ class Filter extends PureComponent {
 
   render() {
     const {
-      movies: { movies }
+      movies: { movies },
     } = this.props;
 
     return (
@@ -54,15 +54,13 @@ class Filter extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    movies: getMoviesState(state)
-  };
-};
+const mapStateToProps = (state) => ({
+  movies: getMoviesState(state),
+});
 
-const matDispatchToProps = dispatch => ({
-  changeSortBy: value => dispatch(actionSortByChange(value)),
-  moviesFetch: value => dispatch(actionMoviesFetchByQueryString(value))
+const matDispatchToProps = (dispatch) => ({
+  changeSortBy: (value) => dispatch(actionSortByChange(value)),
+  moviesFetch: (value) => dispatch(actionMoviesFetchByQueryString(value)),
 });
 
 export default withRouter(

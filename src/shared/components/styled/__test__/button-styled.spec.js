@@ -7,11 +7,11 @@ import Button from '../button';
 
 const theme = {
   dangerColor: 'dangerColor',
-  dangerColorDark: 'dangerColorDark'
+  dangerColorDark: 'dangerColorDark',
 };
 
 const props = {
-  size: 'small'
+  size: 'small',
 };
 
 describe('Button styled', () => {

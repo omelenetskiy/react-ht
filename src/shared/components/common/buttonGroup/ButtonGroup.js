@@ -18,12 +18,12 @@ type Props = {
   controls: {
     title: string,
     buttons: Array<{
-      title: string
-    }>
+      title: string,
+    }>,
   },
   toggleSearchBy: SyntheticEvent<>,
   color: string,
-  type: string
+  type: string,
 };
 
 const ButtonGroup = ({ controls, toggleSearchBy, color, type }: Props) => (
@@ -31,7 +31,7 @@ const ButtonGroup = ({ controls, toggleSearchBy, color, type }: Props) => (
     <StyledFilterTitle color={color}>{controls.title}</StyledFilterTitle>
 
     <div className="filter-buttons">
-      {controls.buttons.map(button => (
+      {controls.buttons.map((button) => (
         <Fragment key={button.title}>
           <Checkbox button={button} toggleSearchBy={toggleSearchBy} />
           <StyledLabel as="label" htmlFor={button.title}>

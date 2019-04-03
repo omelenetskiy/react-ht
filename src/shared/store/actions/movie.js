@@ -1,14 +1,14 @@
 import axios from 'axios';
 
+import { actionMoviesMatchByGenre } from './movies';
+
 export const ACTION_TYPE_MOVIE_FETCH = 'ACTION_TYPE_MOVIE_FETCH';
 export const ACTION_TYPE_MOVIE_FETCHING = 'ACTION_TYPE_MOVIE_FETCHING';
 
-import { actionMoviesMatchByGenre } from './movies';
-
 export function actionMovieFetch({ id }) {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch({
-      type: ACTION_TYPE_MOVIE_FETCHING
+      type: ACTION_TYPE_MOVIE_FETCHING,
     });
 
     try {
@@ -21,7 +21,7 @@ export function actionMovieFetch({ id }) {
       if (response.status === 200) {
         dispatch({
           type: ACTION_TYPE_MOVIE_FETCH,
-          movie
+          movie,
         });
 
         dispatch(actionMoviesMatchByGenre(movie.genres));
@@ -34,11 +34,10 @@ export function actionMovieFetch({ id }) {
   };
 }
 
-export const actionMovieFetchIfNeeded = ({ id }) => {
-  return (dispatch, getState) => {
-    let state = getState();
-    if (state.movie.movie.id !== id) {
-      return dispatch(actionMovieFetch({ id }));
-    }
-  };
+export const actionMovieFetchIfNeeded = ({ id }) => (dispatch, getState) => {
+  const state = getState();
+  if (state.movie.movie.id !== id) {
+    return dispatch(actionMovieFetch({ id }));
+  }
+  return false;
 };

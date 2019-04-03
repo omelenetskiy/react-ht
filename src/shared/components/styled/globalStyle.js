@@ -1,13 +1,13 @@
-import { createGlobalStyle } from "styled-components";
-import bg from "../../../../static/images/collage.jpg";
+import { createGlobalStyle } from 'styled-components';
+import bg from '../../../../static/images/collage.jpg';
 
-export const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
   @import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
 
   * {
     box-sizing: border-box;
   }
-  
+
   html,
   body {
     margin: 0;
@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: "Roboto", sans-serif;
-    min-width: ${props => props.theme.minPageWidth};
+    min-width: ${(props) => props.theme.minPageWidth};
     line-height: 1;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
       url(${bg});
@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
 
   #root {
     height: 100vh;
-    max-width: ${props => props.theme.maxPageWidth};
+    max-width: ${(props) => props.theme.maxPageWidth};
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${props => props.theme.dangerColor};
+    color: ${(props) => props.theme.dangerColor};
     text-decoration: none;
   }
 `;

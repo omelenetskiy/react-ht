@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import StyledMovieCard from '../../styled/card';
 
 const StyledLink = styled(Link)`
-  border: 1px solid ${props => props.theme.stylishColorLight};
+  border: 1px solid ${(props) => props.theme.stylishColorLight};
   background-color: #fff;
   border-radius: 3px;
   margin: 5px;
-  max-width: ${props => props.theme.cardMaxWidth};
+  max-width: ${(props) => props.theme.cardMaxWidth};
 `;
 
 type Props = {
@@ -19,9 +19,9 @@ type Props = {
     poster_path: string,
     title: string,
     genres: Array<{
-      [key]: string
-    }>
-  }
+      [key]: string,
+    }>,
+  },
 };
 
 const MovieCard = ({ movie, parsedDate }: Props) => (

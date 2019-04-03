@@ -7,10 +7,10 @@ export default styled.input`
   overflow: hidden;
 
   &:checked + label {
-    background-color: ${props => props.theme.dangerColorDark};
+    background-color: ${(props) => props.theme.dangerColorDark};
   }
 
   & + label {
-    background-color: ${props => props.theme.stylishColor};
+    background-color: ${(props) => props.theme.stylishColor};
   }
 `;

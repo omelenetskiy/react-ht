@@ -4,7 +4,7 @@ import StyledButton from '../../styled/button';
 type Props = {
   size?: string,
   children?: React.Node,
-  onClick: SyntheticEvent<>
+  onClick: SyntheticEvent<>,
 };
 
 const Button = ({ children, onClick, size }: Props) => (
@@ -12,5 +12,10 @@ const Button = ({ children, onClick, size }: Props) => (
     {children}
   </StyledButton>
 );
+
+Button.defaultProps = {
+  size: 'small',
+  children: null,
+};
 
 export default Button;

@@ -7,11 +7,11 @@ import ButtonGroup from '../buttonGroup';
 
 const theme = {
   stylishColor: 'stylishColor',
-  dangerColorDark: 'dangerColorDark'
+  dangerColorDark: 'dangerColorDark',
 };
 
 const props = {
-  type: 'small'
+  type: 'small',
 };
 
 describe('ButtonGroup styled', () => {

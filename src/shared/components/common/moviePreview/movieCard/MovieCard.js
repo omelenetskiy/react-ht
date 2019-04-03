@@ -2,8 +2,8 @@ import React from 'react';
 
 import StyledMovie from '../../../styled/moviePreview';
 
-const MovieCard = ({ movie, parsedDate }) => {
-  return movie ? (
+const MovieCard = ({ movie, parsedDate }) =>
+  movie ? (
     <StyledMovie>
       <img src={movie.poster_path} className="card-img" alt={movie.title} />
       <div className="card-body">
@@ -24,6 +24,5 @@ const MovieCard = ({ movie, parsedDate }) => {
   ) : (
     <div>Loading...</div>
   );
-};
 
 export default MovieCard;

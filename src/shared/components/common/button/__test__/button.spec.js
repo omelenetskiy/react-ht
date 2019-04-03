@@ -9,7 +9,7 @@ import Button from '../Button';
 const props = {
   children: 'button',
   onClick: jest.fn(),
-  size: 'small'
+  size: 'small',
 };
 
 describe('Button', () => {

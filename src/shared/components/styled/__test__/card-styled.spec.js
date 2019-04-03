@@ -8,7 +8,7 @@ import Card from '../card';
 const theme = {
   cardMaxWidth: 'cardMaxWidth',
   stylishColor: 'stylishColor',
-  stylishColorLight: 'stylishColorLight'
+  stylishColorLight: 'stylishColorLight',
 };
 
 describe('Card styled', () => {

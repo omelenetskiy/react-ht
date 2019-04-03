@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 
 type Props = {
-  children?: React.Node
+  children?: React.Node,
 };
 
 type State = {
-  hasError: boolean
+  hasError: boolean,
 };
 
 class ErrorBoundary extends Component<Props, State> {
   state = { hasError: false };
+
+  static defaultProps = {
+    children: null,
+  };
 
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
   render() {
-    if (this.state.hasError) {
+    const { hasError } = this.state;
+    const { children } = this.props;
+    if (hasError) {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children;
+    return children;
   }
 }
 

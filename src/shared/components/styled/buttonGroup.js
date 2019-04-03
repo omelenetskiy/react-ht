@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default styled.div`
   display: flex;
@@ -10,16 +10,16 @@ export default styled.div`
     margin: 0 15px;
 
     label {
-      background-color: ${props => props.type === "sort" && "transparent"};
-      color: ${props => props.type === "sort" && "#000"};
+      background-color: ${(props) => props.type === 'sort' && 'transparent'};
+      color: ${(props) => props.type === 'sort' && '#000'};
     }
 
     input:checked + label {
-      color: ${props => props.type === "sort" && props.theme.dangerColorDark};
+      color: ${(props) => props.type === 'sort' && props.theme.dangerColorDark};
     }
 
     input + label {
-      color: ${props => props.type === "sort" && props.theme.stylishColor};
+      color: ${(props) => props.type === 'sort' && props.theme.stylishColor};
     }
   }
 `;

@@ -4,8 +4,8 @@ import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import StoryRouter from 'storybook-react-router';
 import ProviderWrapper from '../Provider';
 
-import { theme } from '../../src/shared/components/styled/theme';
-import { GlobalStyle } from '../../src/shared/components/styled/globalStyle';
+import theme from '../../src/shared/components/styled/theme';
+import GlobalStyle from '../../src/shared/components/styled/globalStyle';
 
 import Card from '../../src/shared/components/common/movieCard/MovieCard';
 
@@ -18,9 +18,9 @@ class Movie extends Component {
       poster_path:
         'https://image.tmdb.org/t/p/w500/ldoY4fTZkGISMidNw60GHoNdgP8.jpg',
       title: 'Guardians of the Galaxy Vol. 3',
-      genres: ['Action', 'Horror', 'Comedy']
+      genres: ['Action', 'Horror', 'Comedy'],
     },
-    parsedDate: '2020'
+    parsedDate: '2020',
   };
 
   render() {
@@ -35,7 +35,7 @@ class Movie extends Component {
 }
 
 storiesOf('Card', module)
-  .addDecorator(story => <ProviderWrapper story={story()} />)
+  .addDecorator((story) => <ProviderWrapper story={story()} />)
   .addDecorator(StoryRouter())
   .addDecorator(withThemesProvider(themes))
   .add('movie card', () => <Movie />);

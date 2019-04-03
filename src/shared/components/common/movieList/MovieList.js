@@ -14,14 +14,14 @@ const StyledMovieCardWrapper = styled.div`
 type Props = {
   movies: Array<{
     release_date: string,
-    id: string
-  }>
+    id: string,
+  }>,
 };
 
 const MovieList = ({ movies }: Props) => (
   <StyledMovieCardWrapper>
     {movies && movies.length ? (
-      movies.map(movie => {
+      movies.map((movie) => {
         const date = Date.parse(movie.release_date);
         const parsedDate = new Date(date).getFullYear();
         return (

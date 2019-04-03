@@ -2,7 +2,7 @@ import {
   ACTION_TYPE_MOVIES_FETCH,
   ACTION_TYPE_MOVIES_FETCHING,
   ACTION_TYPE_SEARCH_CHANGE,
-  ACTION_TYPE_SORT_CHANGE
+  ACTION_TYPE_SORT_CHANGE,
 } from '../actions/movies';
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
   searchBy: 'title',
   sortBy: 'vote_average',
   error: false,
-  loading: false
+  loading: false,
 };
 
 export default (state = initialState, action) => {
@@ -18,26 +18,26 @@ export default (state = initialState, action) => {
     case ACTION_TYPE_SEARCH_CHANGE:
       return {
         ...state,
-        searchBy: action.searchBy
+        searchBy: action.searchBy,
       };
     case ACTION_TYPE_SORT_CHANGE:
       return {
         ...state,
-        sortBy: action.sortBy
+        sortBy: action.sortBy,
       };
     case ACTION_TYPE_MOVIES_FETCHING:
       return {
         ...state,
         movies: [],
         error: false,
-        loading: true
+        loading: true,
       };
     case ACTION_TYPE_MOVIES_FETCH:
       return {
         ...state,
         movies: action.movies,
         error: action.error,
-        loading: false
+        loading: false,
       };
     default:
       return state;

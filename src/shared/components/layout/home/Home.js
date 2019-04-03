@@ -2,13 +2,9 @@ import React, { PureComponent, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import {
-  actionMoviesFetch,
-  actionMoviesFetchIfNeeded,
-  actionMoviesFetchByQueryString
-} from '../../../store/actions/movies';
-import { getMoviesState } from '../../../store/selectors';
 import qs from 'query-string';
+import { actionMoviesFetchByQueryString } from '../../../store/actions/movies';
+import { getMoviesState } from '../../../store/selectors';
 
 import SearchForm from '../../common/searchForm/SearchForm';
 import MovieList from '../../common/movieList/MovieList';
@@ -44,10 +40,8 @@ class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    moviesData: getMoviesState(state)
-  };
-};
+const mapStateToProps = (state) => ({
+  moviesData: getMoviesState(state),
+});
 
 export default withRouter(connect(mapStateToProps)(Home));

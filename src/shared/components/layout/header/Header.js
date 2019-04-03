@@ -7,17 +7,17 @@ import { appTitle } from '../../../../config/moviesApp';
 import StyledHeader from '../../styled/header';
 
 const StyledLink = styled(Link)`
-  color: ${props => props.theme.stylishColorLight};
+  color: ${(props) => props.theme.stylishColorLight};
   text-decoration: none;
-  border: 2px solid ${props => props.theme.stylishColorLight};
+  border: 2px solid ${(props) => props.theme.stylishColorLight};
   padding: 5px;
   border-radius: 3px;
 `;
 
 type Props = {
   location: {
-    pathname: string
-  }
+    pathname: string,
+  },
 };
 
 export const Header = ({ location }: Props) => (

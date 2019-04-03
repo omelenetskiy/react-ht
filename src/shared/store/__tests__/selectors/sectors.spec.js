@@ -2,12 +2,12 @@ import {
   getMoviesState,
   getMovieState,
   getMovies,
-  getMovie
+  getMovie,
 } from '../../selectors';
 
 const state = {
   movies: 'movies',
-  movie: 'movie'
+  movie: 'movie',
 };
 
 describe('Selectors', () => {

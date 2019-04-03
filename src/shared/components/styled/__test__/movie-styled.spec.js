@@ -7,11 +7,11 @@ import Movie from '../moviePreview';
 
 const theme = {
   dangerColor: 'dangerColor',
-  stylishColorLight: 'stylishColorLight'
+  stylishColorLight: 'stylishColorLight',
 };
 
 const props = {
-  color: 'light'
+  color: 'light',
 };
 
 describe('Movie styled', () => {

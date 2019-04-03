@@ -1,12 +1,12 @@
 import {
   ACTION_TYPE_MOVIE_FETCH,
-  ACTION_TYPE_MOVIE_FETCHING
-} from "../actions/movie";
+  ACTION_TYPE_MOVIE_FETCHING,
+} from '../actions/movie';
 
 const initialState = {
   movie: {},
   error: false,
-  loading: false
+  loading: false,
 };
 
 export default (state = initialState, action) => {
@@ -16,14 +16,14 @@ export default (state = initialState, action) => {
         ...state,
         movie: {},
         error: false,
-        loading: true
+        loading: true,
       };
     case ACTION_TYPE_MOVIE_FETCH:
       return {
         ...state,
         movie: action.movie,
         error: action.error,
-        loading: false
+        loading: false,
       };
     default:
       return state;

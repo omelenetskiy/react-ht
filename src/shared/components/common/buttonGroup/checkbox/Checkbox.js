@@ -7,9 +7,9 @@ type Props = {
     value: string,
     title: string,
     name: string,
-    checked: boolean
+    checked: boolean,
   },
-  toggleSearchBy: SyntheticEvent<>
+  toggleSearchBy: SyntheticEvent<>,
 };
 
 const Checkbox = ({ button, toggleSearchBy }: Props) => (

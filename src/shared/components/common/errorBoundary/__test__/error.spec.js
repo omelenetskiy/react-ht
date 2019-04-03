@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-enzyme';
 import 'jest-styled-components';

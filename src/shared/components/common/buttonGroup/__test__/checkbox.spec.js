@@ -11,9 +11,9 @@ const props = {
     value: 'value',
     title: 'title',
     name: 'name',
-    checked: true
+    checked: true,
   },
-  toggleSearchBy: jest.fn()
+  toggleSearchBy: jest.fn(),
 };
 
 describe('Checkbox', () => {

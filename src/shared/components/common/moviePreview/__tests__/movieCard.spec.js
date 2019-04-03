@@ -14,9 +14,9 @@ const props = {
     vote_average: 'vote_average',
     tagline: 'tagline',
     runtime: 'runtime',
-    overview: 'overview'
+    overview: 'overview',
   },
-  parsedDate: 'parsedDate'
+  parsedDate: 'parsedDate',
 };
 
 describe('MovieCard', () => {
