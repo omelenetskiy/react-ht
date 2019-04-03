@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import { appTitle } from '../../../../config/moviesApp';
+import { appTitle } from '../../../config/moviesApp';
 import StyledHeader from '../../styled/header';
 
 const StyledLink = styled(Link)`

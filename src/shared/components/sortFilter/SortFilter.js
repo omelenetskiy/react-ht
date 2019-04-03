@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import qs from 'query-string';
-import { getMoviesState } from '../../../store/selectors';
+import { getMoviesState } from '../../store/selectors';
 import {
   actionSortByChange,
   actionMoviesFetchByQueryString,
-} from '../../../store/actions/movies';
+} from '../../store/actions/movies';
 
-import { sortByButtons } from '../../../../config/buttonGroups';
+import { sortByButtons } from '../../../config/buttonGroups';
 
 import ButtonGroup from '../buttonGroup/ButtonGroup';
 

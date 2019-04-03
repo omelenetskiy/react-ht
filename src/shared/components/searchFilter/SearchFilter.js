@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionSearchByChange } from '../../../store/actions/movies';
+import { actionSearchByChange } from '../../store/actions/movies';
 
-import { searchByButtons } from '../../../../config/buttonGroups';
+import { searchByButtons } from '../../../config/buttonGroups';
 
 import StyledSearchFilter from '../../styled/searchFilter';
 import Button from '../button/Button';

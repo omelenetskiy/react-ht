@@ -13,8 +13,8 @@
       {
         "name": "[hash].[ext]",
         "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
-        "publicPath": "/images",
-        "outputPath": "./static/images",
+        "publicPath": "/images/pictures",
+        "outputPath": "static/images/pictures",
         "context": "",
         "limit": 0
       }

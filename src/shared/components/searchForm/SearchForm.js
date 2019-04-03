@@ -3,9 +3,9 @@ import qs from 'query-string';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { actionMoviesFetchByQueryString } from '../../../store/actions/movies';
-import { getMoviesState } from '../../../store/selectors';
-import { searchFormTitle } from '../../../../config/moviesApp';
+import { actionMoviesFetchByQueryString } from '../../store/actions/movies';
+import { getMoviesState } from '../../store/selectors';
+import { searchFormTitle } from '../../../config/moviesApp';
 
 import SortFilter from '../sortFilter/SortFilter';
 import SearchFilter from '../searchFilter/SearchFilter';

@@ -1,10 +1,15 @@
-import Home from '../components/layout/home/Home';
-import Movie from '../components/common/moviePreview/MoviePreview';
+import Home from '../components/home/Home';
+import Movie from '../components/moviePreview/MoviePreview';
 
 const routes = [
   {
-    path: ['/', '/search'],
-    render: () => Home,
+    path: '/',
+    component: Home,
+    exact: true,
+  },
+  {
+    path: '/search',
+    component: Home,
     exact: true,
   },
   {

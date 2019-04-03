@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import configureStore from '../shared/store/store';
-// import App from '../shared/components/App';
-import Loading from '../shared/components/common/loading/Loading';
+import Loading from '../shared/components/loading/Loading';
 
 const preloadedState = window.__INITIAL_STATE__;
 delete window.__INITIAL_STATE__;
@@ -14,7 +13,7 @@ delete window.__INITIAL_STATE__;
 const store = configureStore(preloadedState);
 
 const LoadableApp = Loadable({
-  loader: () => import('../shared/components/App'),
+  loader: () => import('../shared/App'),
   loading: Loading,
 });
 

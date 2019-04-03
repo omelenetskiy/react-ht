@@ -19,7 +19,7 @@ import stats from '../../static/js/react-loadable.json';
 import rootReducer from '../shared/store/reducers';
 
 import routes from '../shared/constants/routes';
-import App from '../shared/components/App';
+import App from '../shared/App';
 import indexHTML from './views';
 
 import config from '../../webpack.dev';

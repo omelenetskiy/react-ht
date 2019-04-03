@@ -2,11 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import {
-  actionMovieFetch,
-  actionMovieFetchIfNeeded,
-} from '../../../store/actions/movie';
-import { getMovieState, getMoviesState } from '../../../store/selectors';
+import { actionMovieFetch } from '../../store/actions/movie';
+import { getMovieState, getMoviesState } from '../../store/selectors';
 
 import MovieList from '../movieList/MovieList';
 import MovieCard from './movieCard/MovieCard';
@@ -29,7 +26,7 @@ export class MoviePreview extends Component {
 
   fetchIfNeeded() {
     const { dispatch, match } = this.props;
-    dispatch(actionMovieFetchIfNeeded({ id: parseInt(match.params.id, 10) }));
+    dispatch(actionMovieFetch({ id: parseInt(match.params.id, 10) }));
   }
 
   render() {

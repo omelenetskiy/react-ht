@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
-import App from '../../shared/components/App';
+import App from '../../shared/App';
 
 const store = {
   dispatch: jest.fn(),

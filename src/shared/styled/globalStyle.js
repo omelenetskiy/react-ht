@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import bg from '../../../../static/images/collage.jpg';
+import bg from '../../../static/images/collage.jpg';
 
 export default createGlobalStyle`
   @import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');

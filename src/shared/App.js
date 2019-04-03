@@ -5,25 +5,23 @@ import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 
 import { ThemeProvider } from 'styled-components';
-import AppHeader from './layout/header/Header';
-import Footer from './layout/footer/Footer';
-import ErrorBoundary from './common/errorBoundary/ErrorBoundary';
+import AppHeader from './components/header/Header';
+import Footer from './components/footer/Footer';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 
-// import Home from './layout/home/Home';
-// import MoviePreview from './common/moviePreview/MoviePreview';
-import NotFound from './common/notFound/NotFound';
-import Loading from './common/loading/Loading';
+import NotFound from './components/notFound/NotFound';
+import Loading from './components/loading/Loading';
 
 import theme from './styled/theme';
 import GlobalStyle from './styled/globalStyle';
 
 const Home = Loadable({
-  loader: () => import('./layout/home/Home'),
+  loader: () => import('./components/home/Home'),
   loading: Loading,
 });
 
 const MoviePreview = Loadable({
-  loader: () => import('./common/moviePreview/MoviePreview'),
+  loader: () => import('./components/moviePreview/MoviePreview'),
   loading: Loading,
 });
 

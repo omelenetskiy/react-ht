@@ -3,11 +3,11 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import qs from 'query-string';
-import { actionMoviesFetchByQueryString } from '../../../store/actions/movies';
-import { getMoviesState } from '../../../store/selectors';
+import { actionMoviesFetchByQueryString } from '../../store/actions/movies';
+import { getMoviesState } from '../../store/selectors';
 
-import SearchForm from '../../common/searchForm/SearchForm';
-import MovieList from '../../common/movieList/MovieList';
+import SearchForm from '../searchForm/SearchForm';
+import MovieList from '../movieList/MovieList';
 
 class Home extends PureComponent {
   static fetchData({ store, params }) {

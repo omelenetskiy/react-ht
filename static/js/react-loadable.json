@@ -1,8 +1,8 @@
 {
-  "../modules/web.timers": [
+  "../modules/web.immediate": [
     {
-      "id": "./node_modules/core-js/modules/web.timers.js",
-      "name": "./node_modules/core-js/modules/web.timers.js",
+      "id": "./node_modules/core-js/modules/web.immediate.js",
+      "name": "./node_modules/core-js/modules/web.immediate.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -79,7 +79,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../../modules/_core": [
+  "../modules/_core": [
     {
       "id": "./node_modules/core-js/modules/_core.js",
       "name": "./node_modules/core-js/modules/_core.js",
@@ -1567,7 +1567,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "./es6.array.iterator": [
+  "../modules/es6.array.iterator": [
     {
       "id": "./node_modules/core-js/modules/es6.array.iterator.js",
       "name": "./node_modules/core-js/modules/es6.array.iterator.js",
@@ -1695,7 +1695,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../../modules/es6.promise": [
+  "../modules/es6.promise": [
     {
       "id": "./node_modules/core-js/modules/es6.promise.js",
       "name": "./node_modules/core-js/modules/es6.promise.js",
@@ -2287,18 +2287,18 @@
       "publicPath": "/main.js"
     }
   ],
-  "@babel/polyfill": [
+  "../modules/web.timers": [
     {
-      "id": "./node_modules/@babel/polyfill/lib/index.js",
-      "name": "./node_modules/@babel/polyfill/lib/index.js",
+      "id": "./node_modules/core-js/modules/web.timers.js",
+      "name": "./node_modules/core-js/modules/web.timers.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "../modules/web.immediate": [
+  "@babel/polyfill": [
     {
-      "id": "./node_modules/core-js/modules/web.immediate.js",
-      "name": "./node_modules/core-js/modules/web.immediate.js",
+      "id": "./node_modules/@babel/polyfill/lib/index.js",
+      "name": "./node_modules/@babel/polyfill/lib/index.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -2359,7 +2359,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "./checkPropTypes": [
+  "prop-types/checkPropTypes": [
     {
       "id": "./node_modules/prop-types/checkPropTypes.js",
       "name": "./node_modules/prop-types/checkPropTypes.js",
@@ -3435,7 +3435,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "./Context": [
+  "./components/Context": [
     {
       "id": "./node_modules/react-redux/es/components/Context.js",
       "name": "./node_modules/react-redux/es/components/Context.js",
@@ -3547,7 +3547,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../utils/warning": [
+  "./warning": [
     {
       "id": "./node_modules/react-redux/es/utils/warning.js",
       "name": "./node_modules/react-redux/es/utils/warning.js",
@@ -3689,7 +3689,9 @@
       "name": "./node_modules/react-router-dom/es/MemoryRouter.js",
       "file": "main.js",
       "publicPath": "/main.js"
-    },
+    }
+  ],
+  "react-router/es/MemoryRouter": [
     {
       "id": "./node_modules/react-router/es/MemoryRouter.js",
       "name": "./node_modules/react-router/es/MemoryRouter.js",
@@ -3711,7 +3713,9 @@
       "name": "./node_modules/react-router-dom/es/Route.js",
       "file": "main.js",
       "publicPath": "/main.js"
-    },
+    }
+  ],
+  "react-router/es/Route": [
     {
       "id": "./node_modules/react-router/es/Route.js",
       "name": "./node_modules/react-router/es/Route.js",
@@ -3749,7 +3753,9 @@
       "name": "./node_modules/react-router-dom/es/Prompt.js",
       "file": "main.js",
       "publicPath": "/main.js"
-    },
+    }
+  ],
+  "react-router/es/Prompt": [
     {
       "id": "./node_modules/react-router/es/Prompt.js",
       "name": "./node_modules/react-router/es/Prompt.js",
@@ -3763,7 +3769,9 @@
       "name": "./node_modules/react-router-dom/es/Redirect.js",
       "file": "main.js",
       "publicPath": "/main.js"
-    },
+    }
+  ],
+  "react-router/es/Redirect": [
     {
       "id": "./node_modules/react-router/es/Redirect.js",
       "name": "./node_modules/react-router/es/Redirect.js",
@@ -3771,16 +3779,10 @@
       "publicPath": "/main.js"
     }
   ],
-  "./generatePath": [
+  "react-router/es/generatePath": [
     {
       "id": "./node_modules/react-router/es/generatePath.js",
       "name": "./node_modules/react-router/es/generatePath.js",
-      "file": "main.js",
-      "publicPath": "/main.js"
-    },
-    {
-      "id": "./node_modules/react-router-dom/es/generatePath.js",
-      "name": "./node_modules/react-router-dom/es/generatePath.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -3791,7 +3793,9 @@
       "name": "./node_modules/react-router-dom/es/StaticRouter.js",
       "file": "main.js",
       "publicPath": "/main.js"
-    },
+    }
+  ],
+  "react-router/es/StaticRouter": [
     {
       "id": "./node_modules/react-router/es/StaticRouter.js",
       "name": "./node_modules/react-router/es/StaticRouter.js",
@@ -3805,10 +3809,20 @@
       "name": "./node_modules/react-router-dom/es/Switch.js",
       "file": "main.js",
       "publicPath": "/main.js"
-    },
+    }
+  ],
+  "react-router/es/Switch": [
     {
       "id": "./node_modules/react-router/es/Switch.js",
       "name": "./node_modules/react-router/es/Switch.js",
+      "file": "main.js",
+      "publicPath": "/main.js"
+    }
+  ],
+  "./generatePath": [
+    {
+      "id": "./node_modules/react-router-dom/es/generatePath.js",
+      "name": "./node_modules/react-router-dom/es/generatePath.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -3877,7 +3891,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../../../store/actions/movies": [
+  "../../store/actions/movies": [
     {
       "id": "./src/shared/store/actions/movies.js",
       "name": "./src/shared/store/actions/movies.js",
@@ -4101,6 +4115,14 @@
       "publicPath": "/main.js"
     }
   ],
+  "../../constants/api": [
+    {
+      "id": "./src/shared/constants/api.js",
+      "name": "./src/shared/constants/api.js",
+      "file": "main.js",
+      "publicPath": "/main.js"
+    }
+  ],
   "./movie": [
     {
       "id": "./src/shared/store/reducers/movie.js",
@@ -4109,7 +4131,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../actions/movie": [
+  "../../store/actions/movie": [
     {
       "id": "./src/shared/store/actions/movie.js",
       "name": "./src/shared/store/actions/movie.js",
@@ -4117,18 +4139,18 @@
       "publicPath": "/main.js"
     }
   ],
-  "../shared/components/common/loading/Loading": [
+  "../shared/components/loading/Loading": [
     {
-      "id": "./src/shared/components/common/loading/Loading.js",
-      "name": "./src/shared/components/common/loading/Loading.js",
+      "id": "./src/shared/components/loading/Loading.js",
+      "name": "./src/shared/components/loading/Loading.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "../shared/components/App": [
+  "../shared/App": [
     {
-      "id": "./src/shared/components/App.js",
-      "name": "./src/shared/components/App.js",
+      "id": "./src/shared/App.js",
+      "name": "./src/shared/App.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -4197,10 +4219,10 @@
       "publicPath": "/main.js"
     }
   ],
-  "./layout/header/Header": [
+  "./components/header/Header": [
     {
-      "id": "./src/shared/components/layout/header/Header.js",
-      "name": "./src/shared/components/layout/header/Header.js",
+      "id": "./src/shared/components/header/Header.js",
+      "name": "./src/shared/components/header/Header.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -4213,7 +4235,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../../../../config/moviesApp": [
+  "../../../config/moviesApp": [
     {
       "id": "./src/config/moviesApp.js",
       "name": "./src/config/moviesApp.js",
@@ -4223,40 +4245,40 @@
   ],
   "../../styled/header": [
     {
-      "id": "./src/shared/components/styled/header.js",
-      "name": "./src/shared/components/styled/header.js",
+      "id": "./src/shared/styled/header.js",
+      "name": "./src/shared/styled/header.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "./layout/footer/Footer": [
+  "./components/footer/Footer": [
     {
-      "id": "./src/shared/components/layout/footer/Footer.js",
-      "name": "./src/shared/components/layout/footer/Footer.js",
+      "id": "./src/shared/components/footer/Footer.js",
+      "name": "./src/shared/components/footer/Footer.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../styled/footer": [
     {
-      "id": "./src/shared/components/styled/footer.js",
-      "name": "./src/shared/components/styled/footer.js",
+      "id": "./src/shared/styled/footer.js",
+      "name": "./src/shared/styled/footer.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "./common/errorBoundary/ErrorBoundary": [
+  "./components/errorBoundary/ErrorBoundary": [
     {
-      "id": "./src/shared/components/common/errorBoundary/ErrorBoundary.js",
-      "name": "./src/shared/components/common/errorBoundary/ErrorBoundary.js",
+      "id": "./src/shared/components/errorBoundary/ErrorBoundary.js",
+      "name": "./src/shared/components/errorBoundary/ErrorBoundary.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "./common/notFound/NotFound": [
+  "./components/notFound/NotFound": [
     {
-      "id": "./src/shared/components/common/notFound/NotFound.js",
-      "name": "./src/shared/components/common/notFound/NotFound.js",
+      "id": "./src/shared/components/notFound/NotFound.js",
+      "name": "./src/shared/components/notFound/NotFound.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -4327,24 +4349,24 @@
   ],
   "./styled/theme": [
     {
-      "id": "./src/shared/components/styled/theme.js",
-      "name": "./src/shared/components/styled/theme.js",
+      "id": "./src/shared/styled/theme.js",
+      "name": "./src/shared/styled/theme.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "./styled/globalStyle": [
     {
-      "id": "./src/shared/components/styled/globalStyle.js",
-      "name": "./src/shared/components/styled/globalStyle.js",
+      "id": "./src/shared/styled/globalStyle.js",
+      "name": "./src/shared/styled/globalStyle.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "./layout/home/Home": [
+  "./components/home/Home": [
     {
-      "id": "./src/shared/components/layout/home/Home.js",
-      "name": "./src/shared/components/layout/home/Home.js",
+      "id": "./src/shared/components/home/Home.js",
+      "name": "./src/shared/components/home/Home.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
@@ -4373,7 +4395,7 @@
       "publicPath": "/main.js"
     }
   ],
-  "../../../store/selectors": [
+  "../../store/selectors": [
     {
       "id": "./src/shared/store/selectors/index.js",
       "name": "./src/shared/store/selectors/index.js",
@@ -4389,23 +4411,23 @@
       "publicPath": "/main.js"
     }
   ],
-  "../../common/searchForm/SearchForm": [
+  "../searchForm/SearchForm": [
     {
-      "id": "./src/shared/components/common/searchForm/SearchForm.js",
-      "name": "./src/shared/components/common/searchForm/SearchForm.js",
+      "id": "./src/shared/components/searchForm/SearchForm.js",
+      "name": "./src/shared/components/searchForm/SearchForm.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../sortFilter/SortFilter": [
     {
-      "id": "./src/shared/components/common/sortFilter/SortFilter.js",
-      "name": "./src/shared/components/common/sortFilter/SortFilter.js",
+      "id": "./src/shared/components/sortFilter/SortFilter.js",
+      "name": "./src/shared/components/sortFilter/SortFilter.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "../../../../config/buttonGroups": [
+  "../../../config/buttonGroups": [
     {
       "id": "./src/config/buttonGroups.js",
       "name": "./src/config/buttonGroups.js",
@@ -4415,152 +4437,152 @@
   ],
   "../buttonGroup/ButtonGroup": [
     {
-      "id": "./src/shared/components/common/buttonGroup/ButtonGroup.js",
-      "name": "./src/shared/components/common/buttonGroup/ButtonGroup.js",
+      "id": "./src/shared/components/buttonGroup/ButtonGroup.js",
+      "name": "./src/shared/components/buttonGroup/ButtonGroup.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../styled/button": [
     {
-      "id": "./src/shared/components/styled/button.js",
-      "name": "./src/shared/components/styled/button.js",
+      "id": "./src/shared/styled/button.js",
+      "name": "./src/shared/styled/button.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "./checkbox/Checkbox": [
     {
-      "id": "./src/shared/components/common/buttonGroup/checkbox/Checkbox.js",
-      "name": "./src/shared/components/common/buttonGroup/checkbox/Checkbox.js",
+      "id": "./src/shared/components/buttonGroup/checkbox/Checkbox.js",
+      "name": "./src/shared/components/buttonGroup/checkbox/Checkbox.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../../styled/checkbox": [
     {
-      "id": "./src/shared/components/styled/checkbox.js",
-      "name": "./src/shared/components/styled/checkbox.js",
+      "id": "./src/shared/styled/checkbox.js",
+      "name": "./src/shared/styled/checkbox.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../styled/buttonGroup": [
     {
-      "id": "./src/shared/components/styled/buttonGroup.js",
-      "name": "./src/shared/components/styled/buttonGroup.js",
+      "id": "./src/shared/styled/buttonGroup.js",
+      "name": "./src/shared/styled/buttonGroup.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../styled/filterTitle": [
     {
-      "id": "./src/shared/components/styled/filterTitle.js",
-      "name": "./src/shared/components/styled/filterTitle.js",
+      "id": "./src/shared/styled/filterTitle.js",
+      "name": "./src/shared/styled/filterTitle.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../searchFilter/SearchFilter": [
     {
-      "id": "./src/shared/components/common/searchFilter/SearchFilter.js",
-      "name": "./src/shared/components/common/searchFilter/SearchFilter.js",
+      "id": "./src/shared/components/searchFilter/SearchFilter.js",
+      "name": "./src/shared/components/searchFilter/SearchFilter.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../styled/searchFilter": [
     {
-      "id": "./src/shared/components/styled/searchFilter.js",
-      "name": "./src/shared/components/styled/searchFilter.js",
+      "id": "./src/shared/styled/searchFilter.js",
+      "name": "./src/shared/styled/searchFilter.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../button/Button": [
     {
-      "id": "./src/shared/components/common/button/Button.js",
-      "name": "./src/shared/components/common/button/Button.js",
+      "id": "./src/shared/components/button/Button.js",
+      "name": "./src/shared/components/button/Button.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "./title/Title": [
     {
-      "id": "./src/shared/components/common/searchForm/title/Title.js",
-      "name": "./src/shared/components/common/searchForm/title/Title.js",
+      "id": "./src/shared/components/searchForm/title/Title.js",
+      "name": "./src/shared/components/searchForm/title/Title.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../../styled/title": [
     {
-      "id": "./src/shared/components/styled/title.js",
-      "name": "./src/shared/components/styled/title.js",
+      "id": "./src/shared/styled/title.js",
+      "name": "./src/shared/styled/title.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "./input/Input": [
     {
-      "id": "./src/shared/components/common/searchForm/input/Input.js",
-      "name": "./src/shared/components/common/searchForm/input/Input.js",
+      "id": "./src/shared/components/searchForm/input/Input.js",
+      "name": "./src/shared/components/searchForm/input/Input.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../../styled/input": [
     {
-      "id": "./src/shared/components/styled/input.js",
-      "name": "./src/shared/components/styled/input.js",
+      "id": "./src/shared/styled/input.js",
+      "name": "./src/shared/styled/input.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "../../common/movieList/MovieList": [
+  "../movieList/MovieList": [
     {
-      "id": "./src/shared/components/common/movieList/MovieList.js",
-      "name": "./src/shared/components/common/movieList/MovieList.js",
+      "id": "./src/shared/components/movieList/MovieList.js",
+      "name": "./src/shared/components/movieList/MovieList.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../movieCard/MovieCard": [
     {
-      "id": "./src/shared/components/common/movieCard/MovieCard.js",
-      "name": "./src/shared/components/common/movieCard/MovieCard.js",
+      "id": "./src/shared/components/movieCard/MovieCard.js",
+      "name": "./src/shared/components/movieCard/MovieCard.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../styled/card": [
     {
-      "id": "./src/shared/components/styled/card.js",
-      "name": "./src/shared/components/styled/card.js",
+      "id": "./src/shared/styled/card.js",
+      "name": "./src/shared/styled/card.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
-  "./common/moviePreview/MoviePreview": [
+  "./components/moviePreview/MoviePreview": [
     {
-      "id": "./src/shared/components/common/moviePreview/MoviePreview.js",
-      "name": "./src/shared/components/common/moviePreview/MoviePreview.js",
+      "id": "./src/shared/components/moviePreview/MoviePreview.js",
+      "name": "./src/shared/components/moviePreview/MoviePreview.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "./movieCard/MovieCard": [
     {
-      "id": "./src/shared/components/common/moviePreview/movieCard/MovieCard.js",
-      "name": "./src/shared/components/common/moviePreview/movieCard/MovieCard.js",
+      "id": "./src/shared/components/moviePreview/movieCard/MovieCard.js",
+      "name": "./src/shared/components/moviePreview/movieCard/MovieCard.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
   ],
   "../../../styled/moviePreview": [
     {
-      "id": "./src/shared/components/styled/moviePreview.js",
-      "name": "./src/shared/components/styled/moviePreview.js",
+      "id": "./src/shared/styled/moviePreview.js",
+      "name": "./src/shared/styled/moviePreview.js",
       "file": "main.js",
       "publicPath": "/main.js"
     }
