@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import qs from 'query-string';
-import { getMoviesState } from '../../store/selectors';
+import { getMoviesState, getMoviesStateData } from '../../store/selectors';
 import {
   actionSortByChange,
   actionMoviesFetchByQueryString,
@@ -22,15 +22,32 @@ const StyledFilter = styled.section`
   flex-direction: row;
   justify-content: space-between;
   flex-shrink: 0;
+
+  span {
+    white-space: nowrap;
+
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+
+  @media screen and (max-width: 684px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 class Filter extends Component {
   toggleSortBy = (e) => {
-    const { location, changeSortBy, moviesFetch, movies } = this.props;
-    changeSortBy(e.target.value);
-    const parsed = qs.parse(location.search);
-    const query = { ...parsed, sortBy: movies.sortBy };
+    const { changeSortBy, moviesFetch, match } = this.props;
+    const queryString = match.params.query;
+    const parsed = qs.parse(queryString);
+    const query = { ...parsed, sortBy: e.target.value };
     const searchString = qs.stringify(query);
+
+    changeSortBy(e.target.value);
+
     moviesFetch(searchString);
   };
 
@@ -54,6 +71,7 @@ class Filter extends Component {
 
 const mapStateToProps = (state) => ({
   movies: getMoviesState(state),
+  moviesData: getMoviesStateData(state),
 });
 
 const matDispatchToProps = (dispatch) => ({

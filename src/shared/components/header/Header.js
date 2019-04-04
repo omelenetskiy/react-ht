@@ -23,7 +23,9 @@ type Props = {
 export const Header = ({ location }: Props) => (
   <StyledHeader>
     <Link to="/">{appTitle}</Link>
-    {location.pathname !== '/' && <StyledLink to="/">Search</StyledLink>}
+    {location.pathname.includes('/movie') && (
+      <StyledLink to="/">Search</StyledLink>
+    )}
   </StyledHeader>
 );
 

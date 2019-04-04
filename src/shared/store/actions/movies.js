@@ -16,13 +16,15 @@ export const actionSortByChange = (sortBy) => ({
   sortBy,
 });
 
-export const actionMoviesMatchByGenres = () => async (dispatch, getState) => {
-  const { movie } = getState();
-  const url = `${moviesURL}&filter=${movie.movie.genres}`;
+export const actionMoviesMatchByGenres = (movie) => async (
+  dispatch,
+  getState
+) => {
+  const url = `${moviesURL}&filter=${movie.genres}`;
   const response = await axios.get(url);
   dispatch({
     type: ACTION_MOVIES_FETCH,
-    movies: response.data.data.filter((el) => el.id !== movie.movie.id),
+    movies: response.data.data.filter((el) => el.id !== movie.id),
   });
 };
 

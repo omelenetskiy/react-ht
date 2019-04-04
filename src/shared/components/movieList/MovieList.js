@@ -10,7 +10,14 @@ const StyledMovieCardWrapper = styled.div`
   padding: 15px 0;
   flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
   background: rgba(255, 255, 255, 0.7);
+  flex-grow: 0.9;
+
+  .not-found {
+    font-size: 45px;
+    font-weight: bold;
+  }
 `;
 
 type Props = {
@@ -21,21 +28,19 @@ type Props = {
 };
 
 const MovieList = ({ movies }: Props) => (
-  <section className="home">
-    <StyledMovieCardWrapper>
-      {movies.length ? (
-        movies.map((movie) => {
-          const date = Date.parse(movie.release_date);
-          const parsedDate = new Date(date).getFullYear();
-          return (
-            <MovieCard key={movie.id} movie={movie} parsedDate={parsedDate} />
-          );
-        })
-      ) : (
-        <p>No films found</p>
-      )}
-    </StyledMovieCardWrapper>
-  </section>
+  <StyledMovieCardWrapper>
+    {movies.length ? (
+      movies.map((movie) => {
+        const date = Date.parse(movie.release_date);
+        const parsedDate = new Date(date).getFullYear();
+        return (
+          <MovieCard key={movie.id} movie={movie} parsedDate={parsedDate} />
+        );
+      })
+    ) : (
+      <p className="not-found">No movies found :(</p>
+    )}
+  </StyledMovieCardWrapper>
 );
 
 const mapStateToProps = (state) => ({

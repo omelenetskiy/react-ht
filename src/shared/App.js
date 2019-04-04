@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { hot } from 'react-hot-loader/root';
+import { Route } from 'react-router-dom';
 
 import theme from './styled/theme';
 import GlobalStyle from './styled/globalStyle';
@@ -18,7 +19,7 @@ const App = () => (
       <ErrorBoundary>
         <AppHeader />
         <Routes />
-        <MoviesList />
+        <Route path="/(search||movie)/" component={MoviesList} />
         <AppFooter />
       </ErrorBoundary>
     </Fragment>

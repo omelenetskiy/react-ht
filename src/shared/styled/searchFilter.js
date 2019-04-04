@@ -6,4 +6,14 @@ export default styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 0;
+
+  @media screen and (max-width: 470px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin-top: 20px;
+    }
+  }
 `;

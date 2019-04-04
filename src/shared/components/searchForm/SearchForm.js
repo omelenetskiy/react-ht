@@ -63,7 +63,7 @@ class SearchForm extends Component {
             onChange={this.handleChange}
           />
           <SearchFilter handleSearch={this.handleSearch} />
-          {movies.length && <SortFilter />}
+          {movies.movies.length ? <SortFilter /> : null}
         </StyledSearchForm>
       </Fragment>
     );

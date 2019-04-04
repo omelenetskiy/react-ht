@@ -27,7 +27,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    height: 100vh;
+    min-height: 100vh;
     max-width: ${(props) => props.theme.maxPageWidth};
     margin: 0 auto;
     padding: 0 20px;

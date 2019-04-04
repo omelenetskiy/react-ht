@@ -16,6 +16,7 @@ export default styled.article`
 
   .card-body {
     color: ${(props) => props.theme.stylishColorLight};
+    padding-right: 25px;
   }
 
   .card-title {
@@ -31,11 +32,12 @@ export default styled.article`
     span {
       display: flex;
       align-items: center;
+      flex-shrink: 0;
       justify-content: center;
-      border: 1px solid ${(props) => props.theme.stylishColorLight};
+      border: 2px solid ${(props) => props.theme.stylishColorLight};
       color: ${(props) => props.theme.stylishColorLight};
       border-radius: 50%;
-      font-size: 20px;
+      font-size: 18px;
       width: 45px;
       height: 45px;
       margin: 0 20px;
@@ -50,5 +52,15 @@ export default styled.article`
 
   .card-text {
     line-height: 1.35em;
+  }
+
+  @media screen and (max-width: 684px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .card-body {
+      text-align: center;
+    }
   }
 `;

@@ -23,13 +23,13 @@ export const sortByButtons = {
       title: 'release date',
       value: 'release_date',
       name: 'filter',
-      checked: true,
+      checked: false,
     },
     {
       title: 'rating',
       value: 'vote_average',
       name: 'filter',
-      checked: false,
+      checked: true,
     },
   ],
 };

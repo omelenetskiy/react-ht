@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SearchForm from './components/searchForm/SearchForm';
 import MoviePreview from './components/moviePreview/MoviePreview';
@@ -10,7 +10,8 @@ const Routes = () => (
     <Route exact path="/" component={SearchForm} />
     <Route path="/search/:query" component={SearchForm} />
     <Route path="/movie/:id" component={MoviePreview} />
-    <Route component={NotFound} />
+    <Route exact path="/404" component={NotFound} />
+    <Redirect to="/404" />
   </Switch>
 );
 

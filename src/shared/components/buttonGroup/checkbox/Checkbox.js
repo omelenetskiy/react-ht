@@ -19,7 +19,7 @@ const Checkbox = ({ button, toggleSearchBy }: Props) => (
     id={button.title}
     name={button.name}
     defaultChecked={button.checked}
-    onChange={toggleSearchBy}
+    onClick={toggleSearchBy}
   />
 );
 

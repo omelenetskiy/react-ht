@@ -1,6 +1,6 @@
 export default {
   maxPageWidth: '1024px',
-  minPageWidth: '360px',
+  minPageWidth: '300px',
 
   cardMaxWidth: '200px',
 
