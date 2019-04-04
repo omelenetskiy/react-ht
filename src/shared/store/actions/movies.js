@@ -11,15 +11,7 @@ export const actionSearchByChange = (searchBy) => ({
   searchBy,
 });
 
-export const actionSortByChange = (sortBy) => ({
-  type: ACTION_SORT_CHANGE,
-  sortBy,
-});
-
-export const actionMoviesMatchByGenres = (movie) => async (
-  dispatch,
-  getState
-) => {
+export const actionMoviesMatchByGenres = (movie) => async (dispatch) => {
   const url = `${moviesURL}&filter=${movie.genres}`;
   const response = await axios.get(url);
   dispatch({
@@ -38,4 +30,13 @@ export const actionMoviesFetchByQueryString = (queryString) => async (
     type: ACTION_MOVIES_FETCH,
     movies: response.data.data,
   });
+};
+
+export const actionSortByChange = (sortBy, query) => async (dispatch) => {
+  await dispatch({
+    type: ACTION_SORT_CHANGE,
+    sortBy,
+  });
+
+  await dispatch(actionMoviesFetchByQueryString(query));
 };

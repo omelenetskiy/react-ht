@@ -22,7 +22,7 @@ type Props = {
 
 export const Header = ({ location }: Props) => (
   <StyledHeader>
-    <Link to="/">{appTitle}</Link>
+    <Link to="/404">{appTitle}</Link>
     {location.pathname.includes('/movie') && (
       <StyledLink to="/">Search</StyledLink>
     )}

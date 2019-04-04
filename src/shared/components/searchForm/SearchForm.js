@@ -36,8 +36,10 @@ class SearchForm extends Component {
     const { history, moviesFetch, movies } = this.props;
     const { inputValue } = this.state;
     const { searchBy } = movies;
+
     const searchQuery = { searchBy, search: inputValue };
     const searchString = qs.stringify(searchQuery);
+
     moviesFetch(searchString);
     history.push(`/search/${searchString}`);
   };

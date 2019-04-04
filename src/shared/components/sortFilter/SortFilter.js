@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import qs from 'query-string';
 import { getMoviesState, getMoviesStateData } from '../../store/selectors';
-import {
-  actionSortByChange,
-  actionMoviesFetchByQueryString,
-} from '../../store/actions/movies';
+import { actionSortByChange } from '../../store/actions/movies';
 
 import { sortByButtons } from '../../../config/buttonGroups';
 
@@ -39,16 +36,14 @@ const StyledFilter = styled.section`
 `;
 
 class Filter extends Component {
-  toggleSortBy = (e) => {
-    const { changeSortBy, moviesFetch, match } = this.props;
+  toggleSortBy = async (e) => {
+    const { changeSortBy, match } = this.props;
     const queryString = match.params.query;
     const parsed = qs.parse(queryString);
     const query = { ...parsed, sortBy: e.target.value };
     const searchString = qs.stringify(query);
 
-    changeSortBy(e.target.value);
-
-    moviesFetch(searchString);
+    await changeSortBy(e.target.value, searchString);
   };
 
   render() {
@@ -75,8 +70,7 @@ const mapStateToProps = (state) => ({
 });
 
 const matDispatchToProps = (dispatch) => ({
-  changeSortBy: (value) => dispatch(actionSortByChange(value)),
-  moviesFetch: (value) => dispatch(actionMoviesFetchByQueryString(value)),
+  changeSortBy: (value, query) => dispatch(actionSortByChange(value, query)),
 });
 
 export default withRouter(
