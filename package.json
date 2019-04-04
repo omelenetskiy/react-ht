@@ -6,7 +6,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "start": "npm run build && NODE_ENV=production babel-node src/server/server.js",
-    "dev": "npm run build && babel-node src/server/server.js",
+    "dev": "babel-node src/server/server.js",
     "storybook": "start-storybook",
     "test": "jest --coverage --colors",
     "test:watch": "jest --coverage --watch --colors",
@@ -86,6 +86,7 @@
     "react-helmet": "^5.2.0",
     "react-loadable": "^5.5.0",
     "react-redux": "^6.0.0",
+    "react-router-config": "^5.0.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",

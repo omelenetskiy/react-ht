@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 module.exports = {
   mode: 'production',
@@ -14,16 +13,12 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ReactLoadablePlugin({
-      filename: './static/js/react-loadable.json',
-    }),
   ],
   resolve: {
     extensions: ['.js'],
   },
   optimization: {
     splitChunks: {
-      chunks: 'async',
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,

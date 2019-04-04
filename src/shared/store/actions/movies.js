@@ -16,30 +16,24 @@ export const actionSortByChange = (sortBy) => ({
   sortBy,
 });
 
-export const actionMoviesMatchByGenre = (genres) => async (dispatch) => {
-  try {
-    const response = await axios.get(`${moviesURL}?filter=${genres}`);
-
-    dispatch({
-      type: ACTION_MOVIES_FETCH,
-      movies: response.data.data,
-    });
-  } catch (error) {
-    console.error(error);
-  }
+export const actionMoviesMatchByGenres = () => async (dispatch, getState) => {
+  const { movie } = getState();
+  const url = `${moviesURL}&filter=${movie.movie.genres}`;
+  const response = await axios.get(url);
+  dispatch({
+    type: ACTION_MOVIES_FETCH,
+    movies: response.data.data.filter((el) => el.id !== movie.movie.id),
+  });
 };
 
 export const actionMoviesFetchByQueryString = (queryString) => async (
   dispatch
 ) => {
-  try {
-    const response = await axios.get(`${moviesURL}&${queryString}`);
+  const url = `${moviesURL}&${queryString}`;
+  const response = await axios.get(url);
 
-    dispatch({
-      type: ACTION_MOVIES_FETCH,
-      movies: response.data.data,
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  dispatch({
+    type: ACTION_MOVIES_FETCH,
+    movies: response.data.data,
+  });
 };

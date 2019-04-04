@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 module.exports = {
   mode: 'development',
@@ -13,17 +12,13 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'static/js'),
-    chunkFilename: '[name].js',
-    filename: '[name].js',
+    filename: 'bundle.js',
     publicPath: '/',
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ReactLoadablePlugin({
-      filename: 'static/js/react-loadable.json',
-    }),
   ],
   resolve: {
     extensions: ['.js'],

@@ -1,59 +1,60 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { actionMovieFetch } from '../../store/actions/movie';
-import { getMovieState, getMoviesState } from '../../store/selectors';
+import { actionMoviesMatchByGenres } from '../../store/actions/movies';
+import { getMovieState } from '../../store/selectors';
 
-import MovieList from '../movieList/MovieList';
-import MovieCard from './movieCard/MovieCard';
+import StyledMovie from '../../styled/moviePreview';
 
-export class MoviePreview extends Component {
-  static fetchData({ store, params }) {
-    store.dispatch(actionMovieFetch({ id: parseInt(params.id, 10) }));
-  }
-
-  componentDidMount() {
-    this.fetchIfNeeded();
+class MoviePreview extends Component {
+  static async fetchData({ store, params }) {
+    await store.dispatch(actionMovieFetch(params.id));
+    await store.dispatch(actionMoviesMatchByGenres());
   }
 
   componentDidUpdate(prevProps) {
-    const { match } = this.props;
+    const { dispatch, match } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
-      this.fetchIfNeeded();
+      dispatch(actionMoviesMatchByGenres());
     }
   }
 
-  fetchIfNeeded() {
-    const { dispatch, match } = this.props;
-    dispatch(actionMovieFetch({ id: parseInt(match.params.id, 10) }));
-  }
-
   render() {
-    const { moviesData, movieData } = this.props;
-    const { movies } = moviesData;
-    const { movie } = movieData;
+    const { movie } = this.props;
     const date = Date.parse(movie.release_date);
     const parsedDate = new Date(date).getFullYear();
+
     return (
       <Fragment>
         <Helmet>
           <title>{`${movie.title}`}</title>
         </Helmet>
-
-        <MovieCard movie={movie} parsedDate={parsedDate} />
-
-        <section className="home">
-          <MovieList movies={movies} />
-        </section>
+        <StyledMovie>
+          <img src={movie.poster_path} className="card-img" alt={movie.title} />
+          <div className="card-body">
+            <div className="card-title">
+              <h1>{movie.title}</h1>
+              {movie.vote_average && <span>{movie.vote_average}</span>}
+            </div>
+            <div className="card-tagline">
+              {movie.tagline && <small>{movie.tagline}</small>}
+            </div>
+            <p className="card-time">
+              <b>{`${parsedDate}`}</b>
+              {movie.runtime && <b>{`${movie.runtime} min`}</b>}
+            </p>
+            <p className="card-text">{movie.overview}</p>
+          </div>
+        </StyledMovie>
       </Fragment>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  movieData: getMovieState(state),
-  moviesData: getMoviesState(state),
+  movie: getMovieState(state),
 });
 
 export default withRouter(connect(mapStateToProps)(MoviePreview));

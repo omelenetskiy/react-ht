@@ -1,10 +1,4 @@
-const index = (
-  helmet = {},
-  appHtml = '',
-  initialState = {},
-  styleTags,
-  bundles
-) =>
+const index = (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
   `<!DOCTYPE html>
     <html>
     <head>
@@ -19,9 +13,7 @@ const index = (
       <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
       </script>
-      ${bundles
-        .map((bundle) => `<script src="/${bundle.file}"></script>`)
-        .join('\\n')}
+      <script type="text/javascript" src="/bundle.js"></script>
     </body>
   </html>`;
 

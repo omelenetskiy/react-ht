@@ -5,8 +5,6 @@ import thunk from 'redux-thunk';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import Loadable from 'react-loadable';
-import { getBundles } from 'react-loadable/webpack';
 import { Server } from 'http';
 import { renderToString } from 'react-dom/server';
 import { matchPath } from 'react-router';
@@ -15,7 +13,6 @@ import { Helmet } from 'react-helmet';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-import stats from '../../static/js/react-loadable.json';
 import rootReducer from '../shared/store/reducers';
 
 import routes from '../shared/constants/routes';
@@ -28,70 +25,66 @@ const compiler = webpack(config);
 const app = new Express();
 const server = new Server(app);
 
-if (process.env.NODE_ENV !== 'production') {
-  app.use(
-    webpackDevMiddleware(compiler, {
-      noInfo: true,
-      publicPath: config.output.publicPath,
-    })
-  );
-  app.use(webpackHotMiddleware(compiler));
-  app.use(Express.static(path.join(__dirname, '../../static')));
-}
+app.use(
+  webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath,
+  })
+);
+app.use(webpackHotMiddleware(compiler));
+app.use(Express.static(path.join(__dirname, '../../static')));
 
 app.get('*', (request, response) => {
   const store = createStore(rootReducer, applyMiddleware(thunk));
   const sheet = new ServerStyleSheet();
-  const modules = [];
 
-  const promises = routes.reduce((matches, route) => {
+  const matches1 = routes.reduce((matches, route) => {
     const match = matchPath(request.url, route.path, route);
     if (match && match.isExact) {
-      matches.push(
-        route.component.fetchData
+      matches.push({
+        route,
+        match,
+        promise: route.component.fetchData
           ? route.component.fetchData({ store, params: match.params })
-          : Promise.resolve(null)
-      );
+          : Promise.resolve(null),
+      });
     }
     return matches;
   }, []);
 
-  Promise.all(promises);
+  const promises = matches1.map((match) => match.promise);
 
-  const initialState = store.getState();
-  const context = {};
+  Promise.all(promises).then(() => {
+    const initialState = store.getState();
+    const context = {};
 
-  const appHtml = renderToString(
-    <Loadable.Capture report={(moduleName) => modules.push(moduleName)}>
-      <Provider store={store}>
+    const appHtml = renderToString(
+      <Provider store={store} key="provider">
         <StaticRouter context={context} location={request.url}>
           <StyleSheetManager sheet={sheet.instance}>
             <App />
           </StyleSheetManager>
         </StaticRouter>
       </Provider>
-    </Loadable.Capture>
-  );
+    );
 
-  const bundles = getBundles(stats, modules);
-  const helmet = Helmet.renderStatic();
-  const styleTags = sheet.getStyleTags();
+    if (context.url) {
+      response.redirect(context.url);
+    } else {
+      const helmet = Helmet.renderStatic();
+      const styleTags = sheet.getStyleTags();
 
-  const html = indexHTML(helmet, appHtml, initialState, styleTags, bundles);
+      const html = indexHTML(helmet, appHtml, initialState, styleTags);
 
-  return response.send(html);
+      return response.status(200).send(html);
+    }
+    return null;
+  });
 });
 
 const port = process.env.PORT || 5000;
 const env = process.env.NODE_ENV || 'development';
 
-Loadable.preloadAll().then(() => {
-  server.listen(port, (error) => {
-    if (error) {
-      return console.error(error);
-    }
-    return console.info(
-      `Server is running on http://localhost:${port} [${env}]`
-    );
-  });
-});
+server.listen(port, (error) =>
+  console.info(`Server is running on http://localhost:${port} [${env}]`)
+);

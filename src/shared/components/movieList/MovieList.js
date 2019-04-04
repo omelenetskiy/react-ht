@@ -19,19 +19,21 @@ type Props = {
 };
 
 const MovieList = ({ movies }: Props) => (
-  <StyledMovieCardWrapper>
-    {movies && movies.length ? (
-      movies.map((movie) => {
-        const date = Date.parse(movie.release_date);
-        const parsedDate = new Date(date).getFullYear();
-        return (
-          <MovieCard key={movie.id} movie={movie} parsedDate={parsedDate} />
-        );
-      })
-    ) : (
-      <p>No films found</p>
-    )}
-  </StyledMovieCardWrapper>
+  <section className="home">
+    <StyledMovieCardWrapper>
+      {movies.length ? (
+        movies.map((movie) => {
+          const date = Date.parse(movie.release_date);
+          const parsedDate = new Date(date).getFullYear();
+          return (
+            <MovieCard key={movie.id} movie={movie} parsedDate={parsedDate} />
+          );
+        })
+      ) : (
+        <p>No films found</p>
+      )}
+    </StyledMovieCardWrapper>
+  </section>
 );
 
 export default MovieList;

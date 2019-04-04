@@ -1,48 +1,42 @@
-// Imports
 import React, { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { hot } from 'react-hot-loader/root';
-import Loadable from 'react-loadable';
-
+import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import AppHeader from './components/header/Header';
-import Footer from './components/footer/Footer';
-import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
-
-import NotFound from './components/notFound/NotFound';
-import Loading from './components/loading/Loading';
+import { Switch, Route } from 'react-router-dom';
+import { hot } from 'react-hot-loader/root';
+import { getMoviesState } from './store/selectors';
 
 import theme from './styled/theme';
 import GlobalStyle from './styled/globalStyle';
 
-const Home = Loadable({
-  loader: () => import('./components/home/Home'),
-  loading: Loading,
-});
+import MoviesList from './components/movieList/MovieList';
+import AppHeader from './components/header/Header';
+import AppFooter from './components/footer/Footer';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
+import SearchForm from './components/searchForm/SearchForm';
+import MoviePreview from './components/moviePreview/MoviePreview';
+import NotFound from './components/notFound/NotFound';
 
-const MoviePreview = Loadable({
-  loader: () => import('./components/moviePreview/MoviePreview'),
-  loading: Loading,
-});
-
-const App = () => (
+const App = ({ moviesData }) => (
   <ThemeProvider theme={theme}>
     <Fragment>
       <GlobalStyle />
-      <AppHeader />
-
       <ErrorBoundary>
+        <AppHeader />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/search" component={Home} />
+          <Route exact path="/" component={SearchForm} />
+          <Route path="/search/:query" component={SearchForm} />
           <Route path="/movie/:id" component={MoviePreview} />
           <Route component={NotFound} />
         </Switch>
+        <MoviesList movies={moviesData.movies} />
+        <AppFooter />
       </ErrorBoundary>
-
-      <Footer />
     </Fragment>
   </ThemeProvider>
 );
 
-export default hot(App);
+const mapStateToProps = (state) => ({
+  moviesData: getMoviesState(state),
+});
+
+export default hot(connect(mapStateToProps)(App));

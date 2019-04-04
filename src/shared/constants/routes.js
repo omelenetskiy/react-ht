@@ -1,21 +1,23 @@
-import Home from '../components/home/Home';
-import Movie from '../components/moviePreview/MoviePreview';
+import SearchForm from '../components/searchForm/SearchForm';
+import MoviePreview from '../components/moviePreview/MoviePreview';
+import NotFound from '../components/notFound/NotFound';
 
-const routes = [
+export default [
   {
     path: '/',
-    component: Home,
+    component: SearchForm,
     exact: true,
   },
   {
-    path: '/search',
-    component: Home,
-    exact: true,
+    path: '/search/:query',
+    component: SearchForm,
   },
   {
     path: '/movie/:id',
-    component: Movie,
+    component: MoviePreview,
+  },
+  {
+    path: '/*',
+    component: NotFound,
   },
 ];
-
-export default routes;

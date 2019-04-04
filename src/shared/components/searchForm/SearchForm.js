@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import qs from 'query-string';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { actionMoviesFetchByQueryString } from '../../store/actions/movies';
@@ -17,6 +18,15 @@ const StyledSearchForm = styled.form`
 `;
 
 class SearchForm extends Component {
+  static async fetchData({ store, params }) {
+    if (params.query) {
+      const parsed = qs.parse(params.query);
+      const stringified = qs.stringify(parsed);
+
+      await store.dispatch(actionMoviesFetchByQueryString(stringified));
+    }
+  }
+
   state = {
     inputValue: '',
   };
@@ -29,10 +39,7 @@ class SearchForm extends Component {
     const searchQuery = { searchBy, search: inputValue };
     const searchString = qs.stringify(searchQuery);
     moviesFetch(searchString);
-    history.push({
-      pathname: '/search/',
-      search: searchString,
-    });
+    history.push(`/search/${searchString}`);
   };
 
   handleChange = (e) => {
@@ -46,12 +53,20 @@ class SearchForm extends Component {
     const { movies } = this.props;
     const { movies: moviesList } = movies;
     return (
-      <StyledSearchForm>
-        <Title>{searchFormTitle}</Title>
-        <Input placeholder="Find your movie..." onChange={this.handleChange} />
-        <SearchFilter handleSearch={this.handleSearch} />
-        {moviesList && moviesList.length && <SortFilter />}
-      </StyledSearchForm>
+      <Fragment>
+        <Helmet>
+          <title>Movies</title>
+        </Helmet>
+        <StyledSearchForm>
+          <Title>{searchFormTitle}</Title>
+          <Input
+            placeholder="Find your movie..."
+            onChange={this.handleChange}
+          />
+          <SearchFilter handleSearch={this.handleSearch} />
+          {moviesList.length && <SortFilter />}
+        </StyledSearchForm>
+      </Fragment>
     );
   }
 }

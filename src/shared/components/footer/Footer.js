@@ -6,7 +6,7 @@ import StyledFooter from '../../styled/footer';
 
 const Footer = () => (
   <StyledFooter>
-    <Link to="/">{appTitle}</Link>
+    <Link to="/404">{appTitle}</Link>
   </StyledFooter>
 );
 

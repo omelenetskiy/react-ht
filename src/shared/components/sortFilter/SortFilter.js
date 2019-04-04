@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -24,7 +24,7 @@ const StyledFilter = styled.section`
   flex-shrink: 0;
 `;
 
-class Filter extends PureComponent {
+class Filter extends Component {
   toggleSortBy = (e) => {
     const { location, changeSortBy, moviesFetch, movies } = this.props;
     changeSortBy(e.target.value);

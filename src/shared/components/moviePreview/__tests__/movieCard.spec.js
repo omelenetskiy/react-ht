@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
-import MovieCard from '../movieCard/MovieCard';
+import MoviePreview from '../MoviePreview';
 
 const props = {
   movie: {
@@ -23,7 +23,7 @@ describe('MovieCard', () => {
   it('should render correctly', () => {
     const wrapper = (
       <Router>
-        <MovieCard {...props} />
+        <MoviePreview {...props} />
       </Router>
     );
 
@@ -35,7 +35,7 @@ describe('MovieCard', () => {
   it('should render Loading...', () => {
     const wrapper = (
       <Router>
-        <MovieCard />
+        <MoviePreview />
       </Router>
     );
 
