@@ -12,7 +12,7 @@ delete window.__INITIAL_STATE__;
 const store = configureStore(preloadedState);
 
 const Client = () => (
-  <Provider store={store} key="provider">
+  <Provider store={store}>
     <Router>
       <App />
     </Router>

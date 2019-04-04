@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { getMoviesState } from '../../store/selectors';
 
 import MovieCard from '../movieCard/MovieCard';
 
@@ -36,4 +38,8 @@ const MovieList = ({ movies }: Props) => (
   </section>
 );
 
-export default MovieList;
+const mapStateToProps = (state) => ({
+  movies: getMoviesState(state),
+});
+
+export default connect(mapStateToProps)(MovieList);

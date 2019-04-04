@@ -1,4 +1,4 @@
-const index = (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
+export default (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
   `<!DOCTYPE html>
     <html>
     <head>
@@ -16,5 +16,3 @@ const index = (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
       <script type="text/javascript" src="/bundle.js"></script>
     </body>
   </html>`;
-
-export default index;

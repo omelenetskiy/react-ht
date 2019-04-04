@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { actionMoviesFetchByQueryString } from '../../store/actions/movies';
-import { getMoviesState } from '../../store/selectors';
+import { getMoviesStateData } from '../../store/selectors';
 import { searchFormTitle } from '../../../config/moviesApp';
 
 import SortFilter from '../sortFilter/SortFilter';
@@ -51,7 +51,6 @@ class SearchForm extends Component {
 
   render() {
     const { movies } = this.props;
-    const { movies: moviesList } = movies;
     return (
       <Fragment>
         <Helmet>
@@ -64,7 +63,7 @@ class SearchForm extends Component {
             onChange={this.handleChange}
           />
           <SearchFilter handleSearch={this.handleSearch} />
-          {moviesList.length && <SortFilter />}
+          {movies.length && <SortFilter />}
         </StyledSearchForm>
       </Fragment>
     );
@@ -72,7 +71,7 @@ class SearchForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  movies: getMoviesState(state),
+  movies: getMoviesStateData(state),
 });
 
 const matDispatchToProps = (dispatch) => ({

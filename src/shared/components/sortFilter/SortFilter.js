@@ -35,9 +35,7 @@ class Filter extends Component {
   };
 
   render() {
-    const {
-      movies: { movies },
-    } = this.props;
+    const { movies } = this.props;
 
     return (
       <StyledFilter>
