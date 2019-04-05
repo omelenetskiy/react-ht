@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-
+import { actionMoviesFetchByQueryString } from '../../store/actions/movies';
 import { appTitle } from '../../../config/moviesApp';
 import StyledHeader from '../../styled/header';
 
@@ -20,13 +21,24 @@ type Props = {
   },
 };
 
-export const Header = ({ location }: Props) => (
+export const Header = ({ location, dispatch, moviesFetch }: Props) => (
   <StyledHeader>
     <Link to="/404">{appTitle}</Link>
     {location.pathname.includes('/movie') && (
-      <StyledLink to="/">Search</StyledLink>
+      <StyledLink to="/" onClick={() => moviesFetch()}>
+        Search
+      </StyledLink>
     )}
   </StyledHeader>
 );
 
-export default withRouter(Header);
+const matDispatchToProps = (dispatch) => ({
+  moviesFetch: () => dispatch(actionMoviesFetchByQueryString()),
+});
+
+export default withRouter(
+  connect(
+    null,
+    matDispatchToProps
+  )(Header)
+);

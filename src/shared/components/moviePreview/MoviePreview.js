@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
+import { Facebook } from 'react-content-loader';
 import { actionMovieFetch } from '../../store/actions/movie';
 import { getMovieState } from '../../store/selectors';
 
@@ -11,6 +12,7 @@ const StyledGenres = styled.div`
   background-color: ${(props) => props.theme.stylishColorLight};
   padding: 10px;
 `;
+
 class MoviePreview extends Component {
   static async fetchData({ store, params }) {
     await store.dispatch(actionMovieFetch(params.id));
@@ -56,7 +58,7 @@ class MoviePreview extends Component {
             </StyledGenres>
           </Fragment>
         ) : (
-          'Loading...'
+          <Facebook />
         )}
       </Fragment>
     );
