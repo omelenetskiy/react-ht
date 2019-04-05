@@ -7,7 +7,7 @@ import { actionMoviesFetchByQueryString } from '../../store/actions/movies';
 import { appTitle } from '../../../config/moviesApp';
 import StyledHeader from '../../styled/header';
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   color: ${(props) => props.theme.stylishColorLight};
   text-decoration: none;
   border: 2px solid ${(props) => props.theme.stylishColorLight};
@@ -21,7 +21,7 @@ type Props = {
   },
 };
 
-export const Header = ({ location, dispatch, moviesFetch }: Props) => (
+export const Header = ({ location, moviesFetch }: Props) => (
   <StyledHeader>
     <Link to="/404">{appTitle}</Link>
     {location.pathname.includes('/movie') && (

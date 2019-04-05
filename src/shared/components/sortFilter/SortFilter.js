@@ -36,14 +36,14 @@ const StyledFilter = styled.section`
 `;
 
 class Filter extends Component {
-  toggleSortBy = async (e) => {
+  toggleSortBy = (e) => {
     const { changeSortBy, match } = this.props;
     const queryString = match.params.query;
     const parsed = qs.parse(queryString);
     const query = { ...parsed, sortBy: e.target.value };
     const searchString = qs.stringify(query);
 
-    await changeSortBy(e.target.value, searchString);
+    changeSortBy(e.target.value, searchString);
   };
 
   render() {

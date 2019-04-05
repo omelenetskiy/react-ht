@@ -1,13 +1,15 @@
 import {
   getMoviesState,
   getMovieState,
+  getMoviesData,
+  getMoviesStateData,
   getMovies,
   getMovie,
 } from '../../selectors';
 
 const state = {
-  movies: 'movies',
-  movie: 'movie',
+  movies: { movies: 'movies' },
+  movie: { movie: 'movie' },
 };
 
 describe('Selectors', () => {
@@ -17,5 +19,8 @@ describe('Selectors', () => {
 
     expect(getMoviesState(state)).toBe('movies');
     expect(getMovieState(state)).toBe('movie');
+
+    expect(getMoviesStateData(state)).toEqual({ movies: 'movies' });
+    expect(getMoviesData(state)).toEqual({ movies: 'movies' });
   });
 });

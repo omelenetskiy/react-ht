@@ -1,39 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieList should render correctly 1`] = `
-.c0 p {
-  font-size: 45px;
-}
-
-<div
-  className="c0"
->
-  <p>
-    404 Page Not Found
-  </p>
-  <a
-    as="button"
-    href="/"
-    onClick={[Function]}
-  >
-    Home
-  </a>
-</div>
-`;
-
 exports[`NotFound should render correctly 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 .c0 p {
-  font-size: 45px;
+  font-size: 75px;
+  font-weight: bold;
+}
+
+.c0 p span {
+  font-size: 150px;
+}
+
+.c1 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: 2px solid;
+  padding: 5px;
+  border-radius: 3px;
+  display: inline-block;
 }
 
 <div
   className="c0"
 >
   <p>
-    404 Page Not Found
+    Error 
+    <span>
+      404
+    </span>
   </p>
   <a
-    as="button"
+    className="c1"
     href="/"
     onClick={[Function]}
   >

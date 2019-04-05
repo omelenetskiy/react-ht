@@ -1,10 +1,16 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter as Router } from 'react-router-dom';
+import configureStore from 'redux-mock-store';
+import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import toJson from 'enzyme-to-json';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
 import MoviePreview from '../MoviePreview';
+
+const initialState = {};
+const mockStore = configureStore();
+let store;
 
 const props = {
   movie: {
@@ -20,27 +26,26 @@ const props = {
 };
 
 describe('MovieCard', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
   it('should render correctly', () => {
-    const wrapper = (
-      <Router>
+    const wrapper = shallow(
+      <Provider store={store}>
         <MoviePreview {...props} />
-      </Router>
+      </Provider>
     );
 
-    const tree = renderer.create(wrapper).toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render Loading...', () => {
-    const wrapper = (
-      <Router>
+    const wrapper = shallow(
+      <Provider store={store}>
         <MoviePreview />
-      </Router>
+      </Provider>
     );
 
-    const tree = renderer.create(wrapper).toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

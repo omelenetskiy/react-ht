@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchFilter should render correctly 1`] = `
+<searchFilter___default>
+  <ButtonGroup
+    color="light"
+    controls={
+      Object {
+        "buttons": Array [
+          Object {
+            "checked": true,
+            "name": "search",
+            "title": "Title",
+            "value": "title",
+          },
+          Object {
+            "checked": false,
+            "name": "search",
+            "title": "Genres",
+            "value": "genres",
+          },
+        ],
+        "title": "SEARCH BY",
+      }
+    }
+    toggleSearchBy={[Function]}
+  />
+  <Button
+    onClick={[MockFunction]}
+    size="large"
+  >
+    Search
+  </Button>
+</searchFilter___default>
+`;

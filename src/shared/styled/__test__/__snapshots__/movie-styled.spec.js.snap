@@ -25,6 +25,7 @@ exports[`Movie styled should render correctly 1`] = `
 
 .c0 .card-body {
   color: stylishColorLight;
+  padding-right: 25px;
 }
 
 .c0 .card-title {
@@ -53,14 +54,17 @@ exports[`Movie styled should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border: 1px solid stylishColorLight;
+  border: 2px solid stylishColorLight;
   color: stylishColorLight;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 18px;
   width: 45px;
   height: 45px;
   margin: 0 20px;
@@ -72,6 +76,26 @@ exports[`Movie styled should render correctly 1`] = `
 
 .c0 .card-text {
   line-height: 1.35em;
+}
+
+@media screen and (max-width:684px) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .c0 .card-body {
+    text-align: center;
+  }
 }
 
 <article

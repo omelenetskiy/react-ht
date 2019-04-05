@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard should render Loading... 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeState": Object {},
+    }
+  }
+>
+  <Connect(MoviePreview) />
+</ContextProvider>
+`;
+
+exports[`MovieCard should render correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeState": Object {},
+    }
+  }
+>
+  <Connect(MoviePreview)
+    movie={
+      Object {
+        "overview": "overview",
+        "poster_path": "poster_path",
+        "release_date": "release_date",
+        "runtime": "runtime",
+        "tagline": "tagline",
+        "title": "title",
+        "vote_average": "vote_average",
+      }
+    }
+    parsedDate="parsedDate"
+  />
+</ContextProvider>
+`;

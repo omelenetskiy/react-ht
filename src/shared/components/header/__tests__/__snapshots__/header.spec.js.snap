@@ -3,7 +3,41 @@
 exports[`Header should render correctly 1`] = `
 .c0 {
   font-weight: bold;
-  min-height: 30px;
+  min-height: 50px;
+  padding: 10px 0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+<header
+  className="c0"
+>
+  <a
+    href="/404"
+    onClick={[Function]}
+  >
+    appTitle
+  </a>
+</header>
+`;
+
+exports[`Header should render correctly 2`] = `
+.c0 {
+  font-weight: bold;
+  min-height: 50px;
   padding: 10px 0;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -30,21 +64,182 @@ exports[`Header should render correctly 1`] = `
   border-radius: 3px;
 }
 
-<header
-  className="c0"
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <a
-    href="/"
-    onClick={[Function]}
-  >
-    appTitle
-  </a>
-  <a
-    className="c1"
-    href="/"
-    onClick={[Function]}
-  >
-    Search
-  </a>
-</header>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Header
+        dispatch={[MockFunction]}
+        location={
+          Object {
+            "pathname": "/movie",
+          }
+        }
+        moviesFetch={[MockFunction]}
+      >
+        <header___default>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "header___default-sc-1ct7ya5-0",
+                  "isStatic": true,
+                  "lastClassName": "c0",
+                  "rules": Array [
+                    "font-weight:bold;min-height:50px;padding:10px 0;display:inline-flex;justify-content:space-between;align-items:center;flex-shrink:0;",
+                  ],
+                },
+                "displayName": "header___default",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "header___default-sc-1ct7ya5-0",
+                "target": "header",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <header
+              className="c0"
+            >
+              <Link
+                replace={false}
+                to="/404"
+              >
+                <a
+                  href="/404"
+                  onClick={[Function]}
+                >
+                  appTitle
+                </a>
+              </Link>
+              <Header__StyledLink
+                onClick={[Function]}
+                to="/"
+              >
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Header__StyledLink-mfkz4-0",
+                        "isStatic": false,
+                        "lastClassName": "c1",
+                        "rules": Array [
+                          "color:",
+                          [Function],
+                          ";text-decoration:none;border:2px solid ",
+                          [Function],
+                          ";padding:5px;border-radius:3px;",
+                        ],
+                      },
+                      "displayName": "Header__StyledLink",
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "Header__StyledLink-mfkz4-0",
+                      "target": [Function],
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  onClick={[Function]}
+                  to="/"
+                >
+                  <Link
+                    className="c1"
+                    onClick={[Function]}
+                    replace={false}
+                    to="/"
+                  >
+                    <a
+                      className="c1"
+                      href="/"
+                      onClick={[Function]}
+                    >
+                      Search
+                    </a>
+                  </Link>
+                </StyledComponent>
+              </Header__StyledLink>
+            </header>
+          </StyledComponent>
+        </header___default>
+      </Header>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;
+
+exports[`Header should render correctly 3`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Header__StyledLink
+    dispatch={[MockFunction]}
+    moviesFetch={[MockFunction]}
+    theme={
+      Object {
+        "stylishColorLight": "stylishColorLight",
+      }
+    }
+    to="/"
+  />
+</Router>
 `;

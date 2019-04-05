@@ -4,12 +4,12 @@ import toJson from 'enzyme-to-json';
 import 'jest-enzyme';
 import 'jest-styled-components';
 
-import App from '../../App';
+import Loading from '../Loading';
 
-describe('App', () => {
+describe('Loading', () => {
   it('should render correctly', () => {
-    const context = shallow(<App />);
+    const wrapper = shallow(<Loading />);
 
-    expect(toJson(context)).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

@@ -10,7 +10,7 @@ exports[`App should render correctly 1`] = `
       "infoColor": "#33b5e5",
       "infoColorDark": "#0099cc",
       "maxPageWidth": "1024px",
-      "minPageWidth": "360px",
+      "minPageWidth": "300px",
       "stylishColor": "#4b515d",
       "stylishColorDark": "#3e4551",
       "stylishColorLight": "#d2d5da",
@@ -22,27 +22,14 @@ exports[`App should render correctly 1`] = `
   }
 >
   <GlobalStyleComponent />
-  <withRouter(Header) />
   <ErrorBoundary>
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/"
-      />
-      <Route
-        component={[Function]}
-        path="/search"
-      />
-      <Route
-        component={[Function]}
-        path="/movie/:id"
-      />
-      <Route
-        component={[Function]}
-      />
-    </Switch>
+    <withRouter(Connect(Header)) />
+    <Routes />
+    <Route
+      component={[Function]}
+      path="/(search||movie)/"
+    />
+    <Footer />
   </ErrorBoundary>
-  <Footer />
 </ThemeProvider>
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieList should render correctly 1`] = `
+exports[`Filter should render correctly 1`] = `
 <ContextProvider
   value={
     Object {
@@ -16,22 +16,22 @@ exports[`MovieList should render correctly 1`] = `
     }
   }
 >
-  <Connect(MovieList)
-    movies={
-      Array [
+  <BrowserRouter>
+    <withRouter(Connect(Filter))
+      changeSortBy={[MockFunction]}
+      match={
         Object {
-          "genres": Array [
-            "genre-1",
-            "genre-2",
-          ],
-          "id": "id",
-          "poster_path": "poster_path",
-          "release_date": "release_date",
-          "title": "title",
-        },
-      ]
-    }
-    parsedDate="parsedDate"
-  />
+          "params": Object {
+            "query": "query",
+          },
+        }
+      }
+      movies={
+        Array [
+          "movie",
+        ]
+      }
+    />
+  </BrowserRouter>
 </ContextProvider>
 `;

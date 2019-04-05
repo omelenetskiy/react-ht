@@ -2,6 +2,7 @@
   "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
   "plugins": [
     "react-hot-loader/babel",
+    "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-strict-mode",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties",
