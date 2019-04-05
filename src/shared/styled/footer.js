@@ -10,8 +10,8 @@ export default styled.footer`
 
   .footer {
     min-height: 30px;
-    padding: 10px 0;
-    max-width: 985px;
+    padding: 10px 20px;
+    max-width: 1024px;
     margin: 0 auto;
     color: #fff;
   }

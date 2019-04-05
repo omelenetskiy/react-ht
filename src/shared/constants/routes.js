@@ -1,6 +1,5 @@
 import SearchForm from '../components/searchForm/SearchForm';
 import MoviePreview from '../components/moviePreview/MoviePreview';
-import NotFound from '../components/notFound/NotFound';
 
 export default [
   {
@@ -15,9 +14,5 @@ export default [
   {
     path: '/movie/:id',
     component: MoviePreview,
-  },
-  {
-    path: '/*',
-    component: NotFound,
   },
 ];

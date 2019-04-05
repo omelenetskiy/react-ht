@@ -1,4 +1,10 @@
-export default (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
+export default (
+  helmet = {},
+  appHtml = '',
+  initialState = {},
+  styleTags,
+  bundles
+) =>
   `<!DOCTYPE html>
     <html>
     <head>
@@ -13,6 +19,9 @@ export default (helmet = {}, appHtml = '', initialState = {}, styleTags) =>
       <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
       </script>
-      <script type="text/javascript" src="/bundle.js"></script>
+      <script type="text/javascript" src="/vendor.bundle.js"></script>
+      ${bundles
+        .map((bundle) => `<script src="/${bundle.file}"></script>`)
+        .join('\\n')}
     </body>
   </html>`;

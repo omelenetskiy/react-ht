@@ -15,7 +15,7 @@ const StyledMovieCardWrapper = styled.div`
   flex-grow: 0.9;
 
   .not-found {
-    font-size: 45px;
+    font-size: 35px;
     font-weight: bold;
   }
 `;

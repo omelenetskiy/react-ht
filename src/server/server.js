@@ -6,6 +6,8 @@ import Cookies from 'cookies';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import Loadable from 'react-loadable';
+import { getBundles } from 'react-loadable/webpack';
 import { Server } from 'http';
 import { renderToString } from 'react-dom/server';
 import { matchPath } from 'react-router';
@@ -20,7 +22,7 @@ import {
 import { Provider } from 'react-redux';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import reducers from '../shared/store/reducers';
-
+import stats from '../../static/react-loadable.json';
 import routes from '../shared/constants/routes';
 import config from '../../webpack.dev';
 import App from '../shared/App';
@@ -70,6 +72,7 @@ app.use(async (req, res, next) => {
 
 app.get('*', async (request, response) => {
   const sheet = new ServerStyleSheet();
+
   const promises = routes.reduce((matches, route) => {
     const match = matchPath(request.url, route.path, route);
     if (match && match.isExact) {
@@ -86,23 +89,28 @@ app.get('*', async (request, response) => {
   }, []);
 
   await Promise.all(promises);
+
+  const modules = [];
   const initialState = request.reduxStore.getState();
   const context = {};
 
   const appHtml = renderToString(
-    <Provider store={request.reduxStore}>
-      <StaticRouter context={context} location={request.url}>
-        <StyleSheetManager sheet={sheet.instance}>
-          <App />
-        </StyleSheetManager>
-      </StaticRouter>
-    </Provider>
+    <Loadable.Capture report={(moduleName) => modules.push(moduleName)}>
+      <Provider store={request.reduxStore}>
+        <StaticRouter context={context} location={request.url}>
+          <StyleSheetManager sheet={sheet.instance}>
+            <App />
+          </StyleSheetManager>
+        </StaticRouter>
+      </Provider>
+    </Loadable.Capture>
   );
 
+  const bundles = getBundles(stats, modules);
   const helmet = Helmet.renderStatic();
   const styleTags = sheet.getStyleTags();
 
-  const html = indexHTML(helmet, appHtml, initialState, styleTags);
+  const html = indexHTML(helmet, appHtml, initialState, styleTags, bundles);
 
   response.send(html);
 });
@@ -110,6 +118,8 @@ app.get('*', async (request, response) => {
 const port = process.env.PORT || 5000;
 const env = process.env.NODE_ENV || 'development';
 
-server.listen(port, (error) =>
-  console.info(`Server is running on http://localhost:${port} [${env}]`)
-);
+Loadable.preloadAll().then(() => {
+  server.listen(port, (error) =>
+    console.info(`Server is running on http://localhost:${port} [${env}]`)
+  );
+});

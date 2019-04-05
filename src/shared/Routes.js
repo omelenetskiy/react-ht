@@ -1,9 +1,19 @@
 import React from 'react';
+import Loadable from 'react-loadable';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import SearchForm from './components/searchForm/SearchForm';
-import MoviePreview from './components/moviePreview/MoviePreview';
 import NotFound from './components/notFound/NotFound';
+import loading from './components/loading/Loading';
+
+const SearchForm = Loadable({
+  loader: () => import('./components/searchForm/SearchForm'),
+  loading,
+});
+
+const MoviePreview = Loadable({
+  loader: () => import('./components/moviePreview/MoviePreview'),
+  loading,
+});
 
 const Routes = () => (
   <Switch>
