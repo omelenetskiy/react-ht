@@ -13,6 +13,5 @@ export const actionMovieFetch = (id) => async (dispatch) => {
     type: ACTION_MOVIE_FETCH,
     movie: response.data,
   });
-
   await dispatch(actionMoviesMatchByGenres(response.data));
 };

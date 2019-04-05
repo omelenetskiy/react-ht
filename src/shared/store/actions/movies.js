@@ -1,15 +1,8 @@
 import axios from 'axios';
-
 import { moviesURL } from '../../constants/api';
 
 export const ACTION_MOVIES_FETCH = 'ACTION_TYPE_MOVIES_FETCH';
-export const ACTION_SEARCH_CHANGE = 'ACTION_TYPE_SEARCH_CHANGE';
 export const ACTION_SORT_CHANGE = 'ACTION_TYPE_SORT_CHANGE';
-
-export const actionSearchByChange = (searchBy) => ({
-  type: ACTION_SEARCH_CHANGE,
-  searchBy,
-});
 
 export const actionMoviesMatchByGenres = (movie) => async (dispatch) => {
   const url = `${moviesURL}&filter=${movie.genres}`;
@@ -25,7 +18,6 @@ export const actionMoviesFetchByQueryString = (queryString) => async (
 ) => {
   const url = `${moviesURL}&${queryString}`;
   const response = await axios.get(url);
-
   dispatch({
     type: ACTION_MOVIES_FETCH,
     movies: response.data.data,
@@ -37,6 +29,5 @@ export const actionSortByChange = (sortBy, query) => async (dispatch) => {
     type: ACTION_SORT_CHANGE,
     sortBy,
   });
-
   await dispatch(actionMoviesFetchByQueryString(query));
 };

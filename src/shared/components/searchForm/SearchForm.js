@@ -29,13 +29,13 @@ class SearchForm extends Component {
 
   state = {
     inputValue: '',
+    searchBy: 'title',
   };
 
   handleSearch = (e) => {
     e.preventDefault();
-    const { history, moviesFetch, movies } = this.props;
-    const { inputValue } = this.state;
-    const { searchBy } = movies;
+    const { inputValue, searchBy } = this.state;
+    const { history, moviesFetch } = this.props;
 
     const searchQuery = { searchBy, search: inputValue };
     const searchString = qs.stringify(searchQuery);
@@ -48,6 +48,12 @@ class SearchForm extends Component {
     const { value } = e.target;
     this.setState({
       inputValue: value,
+    });
+  };
+
+  handleChangeSearchBy = (value) => {
+    this.setState({
+      searchBy: value,
     });
   };
 
@@ -64,7 +70,10 @@ class SearchForm extends Component {
             placeholder="Find your movie..."
             onChange={this.handleChange}
           />
-          <SearchFilter handleSearch={this.handleSearch} />
+          <SearchFilter
+            handleChangeSearchBy={this.handleChangeSearchBy}
+            handleSearch={this.handleSearch}
+          />
           {movies.movies.length ? <SortFilter /> : null}
         </StyledSearchForm>
       </Fragment>

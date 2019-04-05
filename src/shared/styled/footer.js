@@ -13,5 +13,6 @@ export default styled.footer`
     padding: 10px 0;
     max-width: 985px;
     margin: 0 auto;
+    color: #fff;
   }
 `;
